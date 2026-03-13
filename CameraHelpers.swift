@@ -17,7 +17,7 @@ struct CameraPreview: UIViewRepresentable {
             view.layer.addSublayer(layer)
             DispatchQueue.global(qos: .userInitiated).async { session.startRunning() }
         }
-        return view//1111111
+        return view
     }
 
     func updateUIView(_ view: UIView, context: Context) {}
