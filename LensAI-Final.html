@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LensAI — UI/UX Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A1A;--ink2:#222;--ink3:#555;--ink4:#777;--ink5:#999;
+  --paper:#F8F6F3;--paper2:#F2EFE9;--paper3:#E8E4DD;
+  --accent:#2D7A6F;--accent2:#3ABFA8;
+  --alert:#C4564A;--alert-bg:rgba(196,86,74,0.08);
+  --food:#C67B3C;--sign:#4A7FB5;--product:#7B5EA7;--place:#3A8B7A;--doc:#B86B4A;
+  --serif:'Cormorant Garamond','Noto Serif SC',Georgia,serif;
+  --sans:'Outfit',-apple-system,sans-serif;
+  --cn:'Noto Serif SC',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:#fff}
+.page{max-width:1200px;margin:0 auto;padding:0 40px}
+
+/* Hero */
+.hero{padding:100px 0 70px;text-align:center;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:48px;height:1px;background:var(--ink4)}
+.hero-ey{font-size:11px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.hero h1{font-family:var(--serif);font-size:68px;font-weight:300;letter-spacing:-2px;line-height:1;margin-bottom:16px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--ink3);line-height:1.6;max-width:500px;margin:0 auto;font-style:italic}
+.sdiv{display:flex;align-items:center;gap:20px;margin:70px 0 44px}
+.sdiv::before,.sdiv::after{content:'';flex:1;height:1px;background:var(--paper3)}
+.sdiv span{font-size:10px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--ink4);white-space:nowrap}
+
+/* Prototype layout */
+.proto{display:flex;gap:72px;align-items:flex-start;padding-bottom:40px}
+.pw{position:sticky;top:50px;flex-shrink:0}
+
+/* Phone */
+.ph{width:375px;height:812px;background:var(--ink);border-radius:52px;padding:12px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.08),0 32px 64px rgba(0,0,0,.06);position:relative}
+.ps{width:100%;height:100%;border-radius:42px;overflow:hidden;background:#fff;position:relative}
+.isl{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:120px;height:34px;background:#000;border-radius:18px;z-index:200}
+.scr{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .4s ease;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column}
+.scr::-webkit-scrollbar{display:none}
+.scr.on{opacity:1;pointer-events:auto}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:54px 28px 6px;font-size:14px;font-weight:700;flex-shrink:0}
+.sb .r{font-size:12px;font-weight:500;opacity:.5}
+
+/* Tab bar */
+.tb{position:absolute;bottom:0;left:0;right:0;height:80px;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-top:1px solid rgba(0,0,0,.05);display:flex;justify-content:space-around;align-items:flex-start;padding-top:10px;z-index:100;border-radius:0 0 42px 42px}
+.tb.dk{background:rgba(17,17,17,.94);border-top-color:rgba(255,255,255,.06)}
+.ti{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;border:none;background:none;padding:4px 12px}
+.ti .ic{font-size:20px}.ti .lb{font-size:10px;font-weight:500;color:var(--ink4)}
+.ti.on .lb{color:var(--accent);font-weight:700}
+
+/* Unified back button */
+.bk{font-size:14px;font-weight:600;color:var(--accent);cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:6px 0;transition:opacity .15s}
+.bk:active{opacity:.6}
+.bk svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2}
+.bk-dk{color:rgba(255,255,255,.85)}.bk-dk svg{stroke:rgba(255,255,255,.85)}
+
+/* Side panel */
+.desc{flex:1;padding-top:32px}
+.sm{display:none;animation:fu .45s ease}.sm.on{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.mn{font-family:var(--serif);font-size:60px;font-weight:300;color:var(--paper3);line-height:1;margin-bottom:6px}
+.mt{font-family:var(--serif);font-size:34px;font-weight:400;letter-spacing:-.5px;margin-bottom:14px}
+.mb{font-size:15px;font-weight:400;color:var(--ink3);line-height:1.8;margin-bottom:28px;max-width:400px}
+.ml{list-style:none}.ml li{font-size:13px;color:var(--ink3);padding:9px 0;border-bottom:1px solid var(--paper3);display:flex;gap:12px}
+.ml .dt{font-weight:600;color:var(--ink2);min-width:76px}
+.sn{display:flex;gap:8px;margin-top:28px}
+.sd{width:8px;height:8px;border-radius:50%;background:var(--paper3);border:none;cursor:pointer;transition:all .3s;padding:0}
+.sd.on{background:var(--accent);width:24px;border-radius:4px}
+
+/* ── HOME ── */
+.s-home{background:#fff;padding-bottom:96px}
+.s-home .gr{padding:18px 28px 0}.s-home .g1{font-size:14px;color:var(--ink3);margin-bottom:2px}
+.s-home .g2{font-family:var(--serif);font-size:28px;font-weight:400;letter-spacing:-.5px}
+.cta{margin:22px 24px 24px;padding:20px 22px;background:var(--ink);border-radius:20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;color:#fff}
+.cta .cl{width:42px;height:42px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cta .ct{font-size:16px;font-weight:600}.cta .cs{font-size:12px;color:rgba(255,255,255,.65)}.cta .ar{color:rgba(255,255,255,.4);font-size:18px}
+.sh{padding:0 28px;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.sh h3{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink4)}
+.sh a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500}
+.hc{margin:0 24px 9px;padding:15px 16px;background:var(--paper);border-radius:14px;display:flex;gap:13px;align-items:center;cursor:pointer}
+.hc:active{background:var(--paper2)}
+.hc .hi{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.hc .ht{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hc .hd{font-size:12px;color:var(--ink3)}
+.pl{font-size:10px;font-weight:600;padding:3px 8px;border-radius:6px;flex-shrink:0}
+.hs{margin:22px 24px 0;padding:14px 16px;border:1px solid var(--paper3);border-radius:14px}
+.hs .hl{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink4);margin-bottom:8px}
+.hs .hr{font-size:13px;color:var(--ink3);padding:4px 0;display:flex;gap:8px}
+
+/* ── CAMERA ── */
+.s-cam{background:#111;height:100%}
+.cam-top{position:absolute;top:58px;left:28px;right:28px;display:flex;justify-content:space-between;z-index:10}
+.cbtn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;font-size:16px}
+/* Photo cards */
+.dish-cards{position:absolute;inset:0;display:flex;flex-direction:column;padding:96px 20px 100px;gap:10px;overflow-y:auto}
+.dish-cards::-webkit-scrollbar{display:none}
+.dc{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;flex-shrink:0;border:1px solid rgba(255,255,255,.08)}
+.dc img{width:100%;height:154px;object-fit:cover;display:block;filter:brightness(.78)}
+.dc .ov{position:absolute;bottom:0;left:0;right:0;padding:36px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.dc .zn{font-size:21px;font-weight:700;color:#fff;letter-spacing:2px}.dc .en{font-size:13px;color:rgba(255,255,255,.7);margin-top:2px}
+.dc .sb2{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:20px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 4px 14px rgba(45,122,111,.4)}
+.vfc{position:absolute;width:22px;height:22px;border-color:rgba(255,255,255,.45);border-style:solid;border-width:0}
+.vfc.tl{top:8px;left:8px;border-top-width:2px;border-left-width:2px;border-radius:3px 0 0 0}
+.vfc.tr{top:8px;right:8px;border-top-width:2px;border-right-width:2px;border-radius:0 3px 0 0}
+.vfc.bl{bottom:8px;left:8px;border-bottom-width:2px;border-left-width:2px;border-radius:0 0 0 3px}
+.vfc.br{bottom:8px;right:8px;border-bottom-width:2px;border-right-width:2px;border-radius:0 0 3px 0}
+
+/* Slide-up result card */
+.result-card{position:absolute;bottom:0;left:0;right:0;background:#fff;border-radius:24px 24px 42px 42px;padding:18px 22px 34px;box-shadow:0 -8px 32px rgba(0,0,0,.2);max-height:56%;overflow-y:auto;z-index:120;animation:slideUp .35s cubic-bezier(.4,0,.2,1)}
+.result-card::-webkit-scrollbar{display:none}
+.rc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.rc-close{width:32px;height:32px;border-radius:16px;background:#F0EDE8;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#777;font-weight:700}
+.rc-close:active{background:#E0DDD6}
+.rc-cat{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px}
+.rc-name{font-family:var(--serif);font-size:23px;font-weight:400;margin-bottom:2px}
+.rc-sub{font-size:13px;color:var(--ink3);font-style:italic;margin-bottom:12px}
+.rc-label{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:4px}
+.rc-text{font-size:13px;color:var(--ink2);line-height:1.65;margin-bottom:11px}
+.rc-alert{padding:10px 14px;border-radius:10px;background:var(--alert-bg);border-left:3px solid var(--alert);margin-bottom:10px}
+.rc-chef{padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,#1A1A1A,#2D2D2D);color:#fff;cursor:pointer;margin-top:4px}
+
+/* ── PHOTO SCAN ── */
+.s-scan{background:#111;align-items:center;justify-content:center;padding:0 32px}
+.scan-img{width:190px;height:190px;border-radius:22px;overflow:hidden;margin-bottom:28px;position:relative;box-shadow:0 8px 36px rgba(45,122,111,.3)}
+.scan-img img{width:100%;height:100%;object-fit:cover}
+.scan-line-h{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);box-shadow:0 0 12px var(--accent);transition:top .2s linear}
+.scan-ok{position:absolute;inset:0;background:rgba(45,122,111,.25);display:flex;align-items:center;justify-content:center;font-size:48px}
+.pbar{width:100%;height:6px;border-radius:3px;background:rgba(255,255,255,.1);margin-bottom:14px;overflow:hidden}
+.pbar .fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .2s ease}
+.scan-text-box{width:190px;height:190px;border-radius:22px;margin-bottom:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);box-shadow:0 8px 36px rgba(45,122,111,.2);position:relative;overflow:hidden}
+
+/* ── RESULT ── */
+.s-res{background:#fff;padding-bottom:96px}
+.res-img{margin:0 20px 16px;border-radius:16px;overflow:hidden;height:165px}
+.res-img img{width:100%;height:100%;object-fit:cover}
+.res-text{margin:0 20px 16px;border-radius:16px;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#F5EDE0,#EDE3D2)}
+.rh{padding:0 28px 14px}
+.rh .rc2{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+.rh h2{font-family:var(--serif);font-size:26px;font-weight:400;letter-spacing:-.5px;margin-bottom:3px}
+.rh .rp{font-size:14px;color:var(--ink3);font-style:italic}
+.rdiv{margin:0 28px;height:1px;background:var(--paper3)}
+.rb{padding:16px 28px}
+.rb .rl{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
+.rb p{font-size:14px;color:var(--ink2);line-height:1.7}
+.ra{margin:4px 20px 10px;padding:13px 16px;border-radius:12px;background:var(--alert-bg);border-left:3px solid var(--alert)}
+.ra .rat{font-size:12px;font-weight:800;color:var(--alert);margin-bottom:4px}
+.ra .rab{font-size:13px;color:#9B3A30;line-height:1.5}
+.ra .rai{font-size:12px;color:var(--ink4);margin-top:5px;font-style:italic}
+.chef-cta{margin:8px 20px 14px;padding:18px;border-radius:16px;background:linear-gradient(135deg,#1A1A1A,#2D2D2D);color:#fff;cursor:pointer}
+.chef-cta .cc5{margin-top:14px;text-align:center;font-size:15px;font-weight:800;color:var(--accent2);letter-spacing:.5px}
+
+/* ── STAFF ── */
+.staff-hdr{background:var(--ink);color:#fff;padding:54px 28px 24px;text-align:center;position:relative;flex-shrink:0}
+.staff-body{padding:20px 24px 28px;flex:1}
+.si{display:flex;align-items:center;gap:14px;padding:15px 16px;margin-bottom:9px;border-radius:14px;background:#fff;border:1px solid #DDD;cursor:pointer}
+.si .sit{font-size:17px;font-weight:700;color:var(--ink)}.si .sis{font-size:13px;color:var(--ink3)}
+.si .sic{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-size:14px;font-weight:800;display:none;align-items:center;justify-content:center;flex-shrink:0}
+.btn-dark{padding:15px;border-radius:14px;text-align:center;background:var(--ink);color:#fff;font-size:16px;font-weight:700;cursor:pointer;margin-top:16px}
+.btn-accent{padding:15px;border-radius:14px;text-align:center;background:var(--accent);color:#fff;font-size:17px;font-weight:700;cursor:pointer;margin-top:16px}
+.ali{display:flex;align-items:center;gap:11px;padding:13px 14px;margin-bottom:7px;border-radius:12px;cursor:pointer;border:1.5px solid #DDD;background:#fff}
+.ali .azh{font-size:16px;font-weight:700;color:var(--ink)}.ali .aen{font-size:12px;color:var(--ink3)}
+.ali .ab{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;color:#fff}
+.sli{display:flex;align-items:center;gap:14px;padding:17px;margin-bottom:9px;border-radius:14px;cursor:pointer;border:2px solid #DDD;background:#fff}
+.sli .szh{font-size:22px;font-weight:800}.sli .sen{font-size:13px;color:var(--ink3)}
+.bfix{position:absolute;bottom:0;left:0;right:0;padding:12px 24px 28px;background:linear-gradient(transparent,#fff 30%);z-index:50}
+
+/* Done */
+.s-done{background:var(--ink);align-items:center;justify-content:center;text-align:center;padding:32px}
+
+/* History */
+.s-hist{background:#fff;padding-bottom:96px}
+.hist-t{font-family:var(--serif);font-size:30px;font-weight:400;letter-spacing:-.5px;padding:8px 28px 16px}
+.hsb{margin:0 24px 14px;position:relative}
+.hsb input{width:100%;padding:12px 14px 12px 38px;border:1px solid var(--paper3);border-radius:12px;background:var(--paper);font-family:var(--sans);font-size:14px;color:var(--ink);outline:none}
+.hsb input:focus{border-color:var(--accent)}.hsb .hsi{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:14px}
+.flt{display:flex;gap:6px;padding:0 24px;margin-bottom:18px;overflow-x:auto}.flt::-webkit-scrollbar{display:none}
+.fb{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:500;white-space:nowrap;background:var(--paper);color:var(--ink3);border:1px solid var(--paper3);cursor:pointer}
+.fb.on{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:700}
+.hrc{margin:0 24px 7px;padding:15px 16px;display:flex;gap:13px;align-items:center;border-radius:14px;cursor:pointer;border:1px solid transparent}
+.hrc:hover{background:var(--paper);border-color:var(--paper3)}
+.hrc .hri{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
+.hrc .hrt{font-size:15px;font-weight:600}.hrc .hrd{font-size:12px;color:var(--ink3)}.hrc .hrm{font-size:11px;color:var(--ink4);flex-shrink:0}
+
+/* Flow */
+.fg{display:grid;grid-template-columns:repeat(5,1fr);position:relative;margin-bottom:40px}
+.fg::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:var(--paper3)}
+.fi{text-align:center;position:relative}
+.fn{width:52px;height:52px;border-radius:50%;background:#fff;border:1px solid var(--paper3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--serif);font-size:22px;color:var(--accent);z-index:2;position:relative}
+.fi h4{font-size:14px;font-weight:600;margin-bottom:5px}.fi p{font-size:12px;color:var(--ink3);line-height:1.5;padding:0 6px}
+
+/* Tokens */
+.tg{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-bottom:40px}
+.tok h4{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--ink4);margin-bottom:14px}
+.cr{display:flex;align-items:center;gap:12px;padding:7px 0}
+.cd{width:30px;height:30px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,0,0,.06)}
+.cn2{font-size:13px;font-weight:500;margin-bottom:1px}.cv{font-size:11px;color:var(--ink4)}
+.fs{padding:9px 0;border-bottom:1px solid var(--paper3)}
+.fs .fn2{font-size:12px;color:var(--ink3);margin-bottom:3px}
+.ft{text-align:center;padding:50px 0 70px;border-top:1px solid var(--paper3)}
+.ft p{font-family:var(--serif);font-size:16px;color:var(--ink4);font-style:italic}
+
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes vfScan{0%{top:12px;opacity:.6}50%{top:calc(100% - 14px);opacity:1}100%{top:12px;opacity:.6}}
+
+@media(max-width:900px){
+  .proto{flex-direction:column;align-items:center;gap:36px}.pw{position:static}
+  .desc{padding-top:0;text-align:center}.mb{margin:0 auto 28px}.sn{justify-content:center}
+  .fg{grid-template-columns:1fr;gap:20px}.fg::before{display:none}.tg{grid-template-columns:1fr}
+  .hero h1{font-size:48px}
+}
+@media(max-width:420px){.page{padding:0 20px}.ph{transform:scale(.82);transform-origin:top center}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+  <div class="hero-ey">UI / UX Design System</div>
+  <h1>Lens<em>AI</em></h1>
+  <p class="hero-sub">Point. Shoot. Understand China.<br>A cultural visual guide, not a translator.</p>
+</header>
+
+<div class="sdiv"><span>Interactive Prototype</span></div>
+<p style="text-align:center;font-size:14px;color:var(--ink3);margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7">
+  Full flow: <strong>Home → Scan (Photo + Text) → AI Analysis → Result → Ask the Chef → History</strong>
+</p>
+
+<div class="proto">
+<div class="pw">
+<div class="ph">
+<div class="ps" id="phone">
+<div class="isl"></div>
+
+<!-- HOME -->
+<div class="scr s-home on" id="s-home">
+  <div class="sb"><span>9:41</span><span class="r">●●●● WiFi 🔋</span></div>
+  <div class="gr"><div class="g1">Good morning</div><h2 class="g2">What do you see?</h2></div>
+  <div class="cta" onclick="go('cam')">
+    <div style="display:flex;align-items:center;gap:13px"><div class="cl">📸</div><div><div class="ct">Scan something</div><div class="cs">Photo or camera</div></div></div><span class="ar">→</span>
+  </div>
+  <div class="sh"><h3>Recent</h3><a href="#" onclick="event.preventDefault();go('hist')">All →</a></div>
+  <div class="hc" onclick="selDish(0);go('scan')"><div class="hi" style="background:rgba(198,123,60,.08)">🍜</div><div style="flex:1;min-width:0"><div class="ht">Má Là Xiāng Guō</div><div class="hd">Sichuan stir-fry hot pot</div></div><span class="pl" style="background:rgba(198,123,60,.08);color:var(--food)">Food</span></div>
+  <div class="hc" onclick="selDish(1);go('scan')"><div class="hi" style="background:rgba(74,127,181,.08)">🐟</div><div style="flex:1;min-width:0"><div class="ht">Suān Cài Yú</div><div class="hd">Sour pickled cabbage fish</div></div><span class="pl" style="background:rgba(74,127,181,.08);color:var(--sign)">Food</span></div>
+  <div class="hc" onclick="selDish(2);go('scan')"><div class="hi" style="background:rgba(123,94,167,.08)">🥜</div><div style="flex:1;min-width:0"><div class="ht">Gōng Bǎo Jī Dīng</div><div class="hd">Kung Pao Chicken</div></div><span class="pl" style="background:rgba(123,94,167,.08);color:var(--product)">Food</span></div>
+  <div class="hs"><div class="hl">Tips</div><div class="hr">📸 Snap menus for dish context</div><div class="hr">字 Scan Chinese text for meaning</div><div class="hr">💊 Scan medicine for dosage</div></div>
+</div>
+
+<!-- CAMERA — QR-style scanner -->
+<div class="scr s-cam" id="s-cam">
+  <div class="cam-top"><div class="cbtn" onclick="go('home')">✕</div><div class="cbtn">⚡</div></div>
+  <!-- Viewfinder -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(45,122,111,.06) 0%,transparent 55%),linear-gradient(180deg,#0e0e0e,#151515);display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <!-- Scan frame -->
+    <div id="vf-box" style="width:260px;height:260px;position:relative">
+      <div class="vfc tl"></div><div class="vfc tr"></div><div class="vfc bl"></div><div class="vfc br"></div>
+      <!-- Scan line animation -->
+      <div id="vf-line" style="position:absolute;left:8px;right:8px;height:2px;top:50%;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);box-shadow:0 0 14px rgba(45,122,111,.5);animation:vfScan 2.4s ease-in-out infinite"></div>
+      <!-- Center hint -->
+      <div id="vf-hint" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.35);text-align:center;line-height:1.5;padding:0 40px">
+        Point at any Chinese text,<br>menu, sign, or product
+      </div>
+    </div>
+    <div style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.4);text-align:center">Align within frame · Auto-detect</div>
+    <!-- Shutter -->
+    <div style="margin-top:28px;display:flex;align-items:center;gap:40px">
+      <div class="cbtn" style="width:44px;height:44px;font-size:20px">🖼️</div>
+      <div id="shutter" style="width:68px;height:68px;border-radius:50%;border:3px solid rgba(255,255,255,.85);cursor:pointer;position:relative" onclick="demoScan()">
+        <div style="position:absolute;inset:5px;border-radius:50%;background:#fff"></div>
+      </div>
+      <div class="cbtn" style="width:44px;height:44px;font-size:20px">🔄</div>
+    </div>
+    <!-- Demo thumbnails (prototype only) -->
+    <div style="margin-top:24px;text-align:center">
+      <div style="font-size:10px;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">Demo: tap to simulate</div>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:0 20px" id="demo-thumbs"></div>
+    </div>
+  </div>
+  <div class="tb dk" id="tb-cam">
+    <div class="ti" onclick="go('home')"><span class="ic">🏠</span><span class="lb" style="color:rgba(255,255,255,.4)">Home</span></div>
+    <div class="ti on"><span class="ic">📸</span><span class="lb" style="color:var(--accent)">Scan</span></div>
+    <div class="ti" onclick="go('hist')"><span class="ic">📋</span><span class="lb" style="color:rgba(255,255,255,.4)">History</span></div>
+  </div>
+</div>
+
+<!-- PHOTO SCAN ANIMATION -->
+<div class="scr s-scan" id="s-scan">
+  <div class="scan-img" id="scan-img"><img id="scan-photo" src=""><div class="scan-line-h" id="scan-line"></div><div class="scan-ok" id="scan-ok" style="display:none">✓</div></div>
+  <div class="scan-text-box" id="scan-text-box" style="display:none"><span id="st-emoji" style="font-size:28px;margin-bottom:6px"></span><span id="st-zh" style="font-family:var(--cn);font-size:30px;color:rgba(255,255,255,.85);letter-spacing:4px"></span><div class="scan-line-h" id="scan-line2"></div><div class="scan-ok" id="scan-ok2" style="display:none">✓</div></div>
+  <div class="pbar"><div class="fill" id="pbar-fill" style="width:0"></div></div>
+  <div id="scan-msg" style="font-size:14px;color:rgba(255,255,255,.85);font-weight:500;text-align:center;min-height:20px"></div>
+  <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:8px;text-align:center">Powered by Claude AI</div>
+</div>
+
+<!-- RESULT -->
+<div class="scr s-res" id="s-res">
+  <div class="sb"><span>9:42</span><span class="r">●●●● WiFi 🔋</span></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 24px 8px;flex-shrink:0">
+    <span class="bk" onclick="go('cam')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Back</span>
+    <span style="font-size:18px;cursor:pointer">⤴️</span>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding-bottom:96px">
+    <div class="res-img" id="res-img-w"><img id="res-photo" src=""></div>
+    <div class="res-text" id="res-text-w" style="display:none"><span id="res-emoji2" style="font-size:36px;margin-bottom:4px"></span><span id="res-zh2" style="font-family:var(--cn);font-size:26px;font-weight:500;color:var(--ink);letter-spacing:4px"></span></div>
+    <div class="rh"><div class="rc2" id="res-cat"></div><h2 id="res-name"></h2><div class="rp" id="res-sub"></div></div>
+    <div class="rdiv"></div>
+    <div class="rb"><div class="rl">What It Is</div><p id="res-what"></p></div><div class="rdiv"></div>
+    <div class="rb"><div class="rl">Context</div><p id="res-ctx"></p></div><div class="rdiv"></div>
+    <div class="rb"><div class="rl">Tips</div><p id="res-tips"></p></div>
+    <div class="ra" id="res-alert"><div class="rat">⚠️ Common Allergens (general)</div><div class="rab" id="res-allergens"></div><div class="rai">General info — actual ingredients vary by restaurant.</div></div>
+    <div class="chef-cta" id="res-chef" onclick="resetChef();go('staff')">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span style="font-size:28px">🧑‍🍳</span><div><div style="font-size:16px;font-weight:700">Ask the Chef</div><div style="font-size:12px;color:rgba(255,255,255,.7)">让店员确认过敏原与口味</div></div></div>
+      <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.5">Hand your phone to staff — they check a bilingual form, you see results in English.</div>
+      <div class="cc5">递给服务员 → Hand to staff →</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAFF HOME -->
+<div class="scr" id="s-staff" style="background:var(--paper)">
+  <div class="staff-hdr">
+    <span class="bk bk-dk" onclick="go('res')" style="position:absolute;top:54px;left:20px"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>返回 Back</span>
+    <div style="font-size:14px;color:rgba(255,255,255,.7);margin-top:28px;margin-bottom:4px">外国客人想了解</div>
+    <div id="staff-dish" style="font-size:30px;font-weight:700;letter-spacing:4px"></div>
+    <div id="staff-en" style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px"></div>
+  </div>
+  <div class="staff-body">
+    <div style="font-size:16px;color:var(--ink2);font-weight:700;text-align:center;margin-bottom:4px">请帮忙确认以下信息 🙏</div>
+    <div style="font-size:13px;color:var(--ink3);text-align:center;margin-bottom:18px">Please help confirm the following</div>
+    <div class="si" onclick="go('allergen')"><span style="font-size:24px;width:38px;text-align:center">⚠️</span><div style="flex:1"><div class="sit">过敏原确认</div><div class="sis">Allergen Check</div></div><span class="sic" id="chk-a">✓</span><span style="font-size:18px;color:#999">›</span></div>
+    <div class="si" onclick="go('spice')"><span style="font-size:24px;width:38px;text-align:center">🌶️</span><div style="flex:1"><div class="sit">辣度选择</div><div class="sis">Spice Level</div></div><span class="sic" id="chk-s">✓</span><span style="font-size:18px;color:#999">›</span></div>
+    <div class="si" onclick="go('dietary')"><span style="font-size:24px;width:38px;text-align:center">🥩</span><div style="flex:1"><div class="sit">食材确认</div><div class="sis">Ingredients / Dietary</div></div><span class="sic" id="chk-d">✓</span><span style="font-size:18px;color:#999">›</span></div>
+    <div class="si" onclick="go('custom')"><span style="font-size:24px;width:38px;text-align:center">💬</span><div style="flex:1"><div class="sit">其他问题</div><div class="sis">Other Requests</div></div><span class="sic" id="chk-c">✓</span><span style="font-size:18px;color:#999">›</span></div>
+    <div class="btn-accent" onclick="go('done')">全部完成 ✓ Done</div>
+  </div>
+</div>
+
+<!-- ALLERGEN -->
+<div class="scr" id="s-allergen" style="background:#fff">
+  <div style="padding:54px 24px 8px;display:flex;justify-content:space-between;flex-shrink:0"><span class="bk" onclick="go('staff')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>返回</span><span style="font-size:13px;color:var(--ink4);font-weight:500">1 / 4</span></div>
+  <div style="padding:0 24px 6px;flex-shrink:0"><div style="font-size:21px;font-weight:800;margin-bottom:4px">⚠️ 这道菜含有以下食材吗？</div><div style="font-size:13px;color:var(--ink3);margin-bottom:4px">Does this dish contain the following?</div><div style="font-size:13px;color:var(--alert);font-weight:700">点一下 = 含有 ✓ &nbsp; 再点 = 不含 ✗ &nbsp; 不确定跳过</div></div>
+  <div id="allergen-list" style="padding:6px 24px 100px;overflow-y:auto;flex:1"></div>
+  <div class="bfix"><div class="btn-dark" onclick="$('chk-a').style.display='flex';go('staff')">确认 · Confirm</div></div>
+</div>
+
+<!-- SPICE -->
+<div class="scr" id="s-spice" style="background:#fff">
+  <div style="padding:54px 24px 8px;display:flex;justify-content:space-between;flex-shrink:0"><span class="bk" onclick="go('staff')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>返回</span><span style="font-size:13px;color:var(--ink4);font-weight:500">2 / 4</span></div>
+  <div style="padding:0 24px 14px;flex-shrink:0"><div style="font-size:21px;font-weight:800;margin-bottom:4px">🌶️ 客人想要什么辣度？</div><div style="font-size:13px;color:var(--ink3)">What spice level would the guest like?</div></div>
+  <div id="spice-list" style="padding:0 24px"></div>
+  <div style="padding:20px 24px 28px"><div class="btn-dark" onclick="$('chk-s').style.display='flex';go('staff')">确认 · Confirm</div></div>
+</div>
+
+<!-- DIETARY -->
+<div class="scr" id="s-dietary" style="background:#fff">
+  <div style="padding:54px 24px 8px;display:flex;justify-content:space-between;flex-shrink:0"><span class="bk" onclick="go('staff')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>返回</span><span style="font-size:13px;color:var(--ink4);font-weight:500">3 / 4</span></div>
+  <div style="padding:0 24px 6px;flex-shrink:0"><div style="font-size:21px;font-weight:800;margin-bottom:4px">🥩 这道菜包含以下成分吗？</div><div style="font-size:13px;color:var(--ink3);margin-bottom:4px">Does this dish contain the following?</div><div style="font-size:13px;color:var(--sign);font-weight:700">请勾选含有的项目</div></div>
+  <div id="dietary-list" style="padding:6px 24px 100px;overflow-y:auto;flex:1"></div>
+  <div class="bfix"><div class="btn-dark" onclick="$('chk-d').style.display='flex';go('staff')">确认 · Confirm</div></div>
+</div>
+
+<!-- CUSTOM -->
+<div class="scr" id="s-custom" style="background:#fff">
+  <div style="padding:54px 24px 8px;display:flex;justify-content:space-between;flex-shrink:0"><span class="bk" onclick="go('staff')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>返回</span><span style="font-size:13px;color:var(--ink4);font-weight:500">4 / 4</span></div>
+  <div style="padding:0 24px 14px;flex-shrink:0"><div style="font-size:21px;font-weight:800;margin-bottom:4px">💬 其他问题</div><div style="font-size:13px;color:var(--ink3)">Other requests — tap if possible</div></div>
+  <div id="custom-list" style="padding:0 24px"></div>
+  <div style="padding:12px 24px"><div style="font-size:15px;font-weight:700;margin-bottom:6px">备注 · Note</div><textarea id="staff-note" placeholder="如有其他说明请写在这里..." style="width:100%;min-height:64px;padding:12px;border-radius:12px;border:1.5px solid #DDD;font-size:15px;font-family:inherit;resize:vertical;outline:none"></textarea></div>
+  <div style="padding:8px 24px 28px"><div class="btn-dark" onclick="$('chk-c').style.display='flex';go('staff')">确认 · Confirm</div></div>
+</div>
+
+<!-- DONE -->
+<div class="scr s-done" id="s-done">
+  <div style="font-size:72px;margin-bottom:24px">🙏</div>
+  <div style="font-size:28px;font-weight:800;color:#fff;margin-bottom:8px">谢谢！</div>
+  <div style="font-size:16px;color:rgba(255,255,255,.8)">Thank you!</div>
+  <div style="font-size:15px;color:rgba(255,255,255,.6);margin:8px 0 36px">请将手机还给客人 📱<br>Please hand the phone back</div>
+  <div onclick="go('uresult')" style="padding:14px 48px;border-radius:14px;background:var(--accent);color:#fff;font-size:16px;font-weight:700;cursor:pointer">View Results · 查看结果</div>
+</div>
+
+<!-- USER RESULT -->
+<div class="scr" id="s-uresult" style="background:#fff">
+  <div class="sb"><span>9:43</span><span class="r">●●●● WiFi 🔋</span></div>
+  <div style="padding:4px 24px 8px;flex-shrink:0"><span class="bk" onclick="go('home');resetChef()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>New scan</span></div>
+  <div id="uresult-body" style="flex:1;overflow-y:auto;padding:0 20px 32px"></div>
+</div>
+
+<!-- HISTORY -->
+<div class="scr s-hist" id="s-hist">
+  <div class="sb"><span>9:43</span><span class="r">●●●● WiFi 🔋</span></div>
+  <h2 class="hist-t">History</h2>
+  <div class="hsb"><span class="hsi">🔍</span><input type="text" placeholder="Search scans..." disabled></div>
+  <div class="flt"><span class="fb on" onclick="fClick(this)">All</span><span class="fb" onclick="fClick(this)">Food</span><span class="fb" onclick="fClick(this)">Sign</span><span class="fb" onclick="fClick(this)">Product</span><span class="fb" onclick="fClick(this)">Place</span><span class="fb" onclick="fClick(this)">Doc</span></div>
+  <div class="hrc" onclick="selDish(0);go('scan')"><div class="hri" style="background:rgba(198,123,60,.06)">🍜</div><div style="flex:1;min-width:0"><div class="hrt">Má Là Xiāng Guō</div><div class="hrd">Sichuan stir-fry hot pot</div></div><div class="hrm">2 min</div></div>
+  <div class="hrc" onclick="selDish(1);go('scan')"><div class="hri" style="background:rgba(74,127,181,.06)">🐟</div><div style="flex:1;min-width:0"><div class="hrt">Suān Cài Yú</div><div class="hrd">Sour pickled cabbage fish</div></div><div class="hrm">1 hr</div></div>
+  <div class="hrc" onclick="selDish(2);go('scan')"><div class="hri" style="background:rgba(123,94,167,.06)">🥜</div><div style="flex:1;min-width:0"><div class="hrt">Gōng Bǎo Jī Dīng</div><div class="hrd">Kung Pao Chicken</div></div><div class="hrm">Yesterday</div></div>
+  <div class="hrc"><div class="hri" style="background:rgba(58,139,122,.06)">🚧</div><div style="flex:1;min-width:0"><div class="hrt">前方施工</div><div class="hrd">Construction Ahead sign</div></div><div class="hrm">Yesterday</div></div>
+  <div class="hrc"><div class="hri" style="background:rgba(123,94,167,.06)">💊</div><div style="flex:1;min-width:0"><div class="hrt">连花清瘟胶囊</div><div class="hrd">Cold medicine · TCM</div></div><div class="hrm">Mar 6</div></div>
+  <div class="tb"><div class="ti" onclick="go('home')"><span class="ic">🏠</span><span class="lb">Home</span></div><div class="ti" onclick="go('cam')"><span class="ic">📸</span><span class="lb">Scan</span></div><div class="ti on"><span class="ic">📋</span><span class="lb">History</span></div></div>
+</div>
+
+<!-- Home tab bar -->
+<div class="tb" id="tb-home" style="z-index:100">
+  <div class="ti on" onclick="go('home')"><span class="ic">🏠</span><span class="lb" style="color:var(--accent)">Home</span></div>
+  <div class="ti" onclick="go('cam')"><span class="ic">📸</span><span class="lb">Scan</span></div>
+  <div class="ti" onclick="go('hist')"><span class="ic">📋</span><span class="lb">History</span></div>
+</div>
+
+</div></div></div>
+
+<!-- Side panel -->
+<div class="desc">
+  <div class="sm on" id="m-home"><div class="mn">01</div><div class="mt">Home</div><p class="mb">Calm landing. Warm greeting, single CTA, recent scans.</p><ul class="ml"><li><span class="dt">Pattern</span>Greeting → CTA → History</li><li><span class="dt">Tone</span>Warm, confident</li><li><span class="dt">Data</span>SwiftData local</li></ul><div class="sn" id="dots-0"></div></div>
+  <div class="sm" id="m-cam"><div class="mn">02</div><div class="mt">Scan</div><p class="mb">One unified feed — food photos and Chinese text items together. Tap a dish photo for instant AI analysis, or tap a text scenario to enter the live viewfinder with line-by-line detection.</p><ul class="ml"><li><span class="dt">Feed</span>Photo dishes + text scenarios</li><li><span class="dt">Photo</span>Tap → AI scan animation → Result</li><li><span class="dt">Text</span>Tap → viewfinder → detect → tap word</li><li><span class="dt">Smart</span>Food → Ask the Chef · Sign → no chef</li></ul><div class="sn" id="dots-1"></div></div>
+  <div class="sm" id="m-scan"><div class="mn">03</div><div class="mt">AI Scan</div><p class="mb">Photo + progress bar + status messages. ~2s simulated analysis.</p><ul class="ml"><li><span class="dt">Steps</span>Detect → Identify → Analyze → Context</li><li><span class="dt">Engine</span>Claude API · base64</li></ul><div class="sn" id="dots-2"></div></div>
+  <div class="sm" id="m-res"><div class="mn">04</div><div class="mt">Result</div><p class="mb">Cultural explanation — not translation. What, Context, Tips, Allergens. Ask the Chef for real-world confirmation.</p><ul class="ml"><li><span class="dt">Sections</span>What · Context · Tips · Alert</li><li><span class="dt">Honesty</span>"General info — every shop differs"</li><li><span class="dt">Bridge</span>Ask the Chef</li></ul><div class="sn" id="dots-3"></div></div>
+  <div class="sm" id="m-chef"><div class="mn">05</div><div class="mt">Ask the Chef</div><p class="mb">Hand phone to staff. Bilingual checklist: 12 allergens (3-state), 5 spice levels, 8 dietary items, custom Q&A. Close button to exit anytime.</p><ul class="ml"><li><span class="dt">Allergens</span>12 items · yes/no/skip</li><li><span class="dt">Spice</span>5 levels</li><li><span class="dt">Dietary</span>8 items · pork, MSG, etc</li><li><span class="dt">Flow</span>Staff → Thank you → User result</li></ul><div class="sn" id="dots-4"></div></div>
+  <div class="sm" id="m-hist"><div class="mn">06</div><div class="mt">History</div><p class="mb">Personal phrasebook. Search, filter, revisit.</p><ul class="ml"><li><span class="dt">Storage</span>SwiftData</li><li><span class="dt">Filter</span>Category pills</li></ul><div class="sn" id="dots-5"></div></div>
+</div>
+</div>
+
+<!-- FLOW -->
+<div class="sdiv"><span>User Flow</span></div>
+<div class="fg">
+  <div class="fi"><div class="fn">1</div><h4>Capture</h4><p>Photo or text — menu, sign, medicine</p></div>
+  <div class="fi"><div class="fn">2</div><h4>Scan</h4><p>AI detects and identifies Chinese content</p></div>
+  <div class="fi"><div class="fn">3</div><h4>Understand</h4><p>Cultural context, tips, allergen warnings</p></div>
+  <div class="fi"><div class="fn">4</div><h4>Confirm</h4><p>Ask the Chef — staff checks real ingredients</p></div>
+  <div class="fi"><div class="fn">5</div><h4>Save</h4><p>Searchable local history</p></div>
+</div>
+
+<!-- TOKENS -->
+<div class="sdiv"><span>Design Tokens</span></div>
+<div class="tg">
+  <div class="tok"><h4>Color</h4>
+    <div class="cr"><div class="cd" style="background:#1A1A1A"></div><div><div class="cn2">Ink</div><div class="cv">#1A1A1A</div></div></div>
+    <div class="cr"><div class="cd" style="background:#F8F6F3"></div><div><div class="cn2">Paper</div><div class="cv">#F8F6F3</div></div></div>
+    <div class="cr"><div class="cd" style="background:#2D7A6F"></div><div><div class="cn2">Accent</div><div class="cv">#2D7A6F</div></div></div>
+    <div class="cr"><div class="cd" style="background:#C4564A"></div><div><div class="cn2">Alert</div><div class="cv">#C4564A</div></div></div>
+    <div class="cr"><div class="cd" style="background:#C67B3C"></div><div><div class="cn2">Food</div><div class="cv">#C67B3C</div></div></div>
+    <div class="cr"><div class="cd" style="background:#4A7FB5"></div><div><div class="cn2">Sign</div><div class="cv">#4A7FB5</div></div></div>
+    <div class="cr"><div class="cd" style="background:#7B5EA7"></div><div><div class="cn2">Product</div><div class="cv">#7B5EA7</div></div></div>
+  </div>
+  <div class="tok"><h4>Typography</h4>
+    <div class="fs"><div class="fn2">Cormorant Garamond — Display</div><div style="font-family:var(--serif);font-size:24px">What do you see?</div></div>
+    <div class="fs"><div class="fn2">Outfit — Body</div><div style="font-size:24px;font-weight:400">Scan something</div></div>
+    <div class="fs"><div class="fn2">Noto Serif SC — Chinese</div><div style="font-family:var(--cn);font-size:24px">麻辣香锅</div></div>
+  </div>
+</div>
+<footer class="ft"><p>Designed with clarity and care — LensAI</p></footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+// ─── DATA ───
+const DISHES=[
+  {id:"mala",photo:"https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600&q=80",zh:"麻辣香锅",en:"Má Là Xiāng Guō",title:"Numbing Spicy Stir-Fry Pot",cat:"Food",catC:"#C67B3C",what:"A Sichuan dry stir-fry — pick raw ingredients at the counter, wok-fried with chili oil and Sichuan peppercorn.",ctx:"Street food origins in Chengdu. No broth — dry and intensely flavored.",tips:"Point at what you want. Say 微辣 (wēi là) for mild. Pair with 米饭 (rice).",alg:"Peanuts, shellfish, Sichuan peppercorn, soy, sesame",type:"photo"},
+  {id:"scy",photo:"https://images.unsplash.com/photo-1583032015879-e5022cb87c3b?w=600&q=80",zh:"酸菜鱼",en:"Suān Cài Yú",title:"Sour Pickled Cabbage Fish",cat:"Food",catC:"#C67B3C",what:"Thinly sliced freshwater fish in tangy broth with Chinese pickled mustard greens.",ctx:"A Chongqing classic. Sourness from fermented mustard greens, not vinegar.",tips:"Fish bones are thin — eat carefully. Broth is for flavoring, not drinking.",alg:"Fish, soy, Sichuan peppercorn, dried chili, MSG",type:"photo"},
+  {id:"gbj",photo:"https://images.unsplash.com/photo-1525755662778-989d0524087e?w=600&q=80",zh:"宫保鸡丁",en:"Gōng Bǎo Jī Dīng",title:"Kung Pao Chicken",cat:"Food",catC:"#C67B3C",what:"Diced chicken with dried chili, Sichuan peppercorn, and roasted peanuts.",ctx:"Named after a Qing Dynasty governor. Authentic version is spicier than Western adaptations.",tips:"Dried chilies are for aroma. Ask for 少辣 (shǎo là) if you prefer mild.",alg:"Peanuts, soy, wheat, sesame oil, dried chili",type:"photo"}
+];
+const ALLERGENS=[{id:"peanut",zh:"花生",en:"Peanut",e:"🥜"},{id:"treenut",zh:"坚果类",en:"Tree Nuts",e:"🌰",s:"核桃/腰果/杏仁"},{id:"shellfish",zh:"甲壳类",en:"Shellfish",e:"🦐",s:"虾/蟹/龙虾"},{id:"fish",zh:"鱼类",en:"Fish",e:"🐟"},{id:"egg",zh:"鸡蛋",en:"Egg",e:"🥚"},{id:"milk",zh:"牛奶/乳制品",en:"Dairy",e:"🥛"},{id:"soy",zh:"大豆",en:"Soy",e:"🫘"},{id:"wheat",zh:"小麦/面筋",en:"Wheat/Gluten",e:"🌾"},{id:"sesame",zh:"芝麻",en:"Sesame",e:"🫗"},{id:"celery",zh:"芹菜",en:"Celery",e:"🥬"},{id:"mustard",zh:"芥末",en:"Mustard",e:"🟡"},{id:"sulfite",zh:"亚硫酸盐",en:"Sulfites",e:"🧪",s:"常见于酒/干果"}];
+const SPICES=[{id:"none",zh:"不辣",en:"No spice",c:"#4A7FB5",ic:"❄️"},{id:"mild",zh:"微辣",en:"Mild",c:"#2D7A6F",ic:"🌶️"},{id:"medium",zh:"中辣",en:"Medium",c:"#C67B3C",ic:"🌶️🌶️"},{id:"hot",zh:"辣",en:"Hot",c:"#C4564A",ic:"🌶️🌶️🌶️"},{id:"extreme",zh:"特辣",en:"Extra hot",c:"#8B2020",ic:"🔥"}];
+const DIETARY=[{id:"pork",zh:"含猪肉",en:"Pork",e:"🐷"},{id:"beef",zh:"含牛肉",en:"Beef",e:"🐄"},{id:"lard",zh:"用猪油炒",en:"Lard",e:"🫙"},{id:"alcohol",zh:"含酒精",en:"Alcohol",e:"🍺"},{id:"msg",zh:"含味精",en:"MSG",e:"🧂"},{id:"cilantro",zh:"含香菜",en:"Cilantro",e:"🌿"},{id:"sichuan",zh:"含花椒（麻）",en:"Sichuan pepper",e:"⚡"},{id:"sugar",zh:"偏甜",en:"Sweet",e:"🍬"}];
+const CUSTOMS=[{id:"rm",zh:"可以去掉某些食材吗？",en:"Can ingredients be removed?"},{id:"lo",zh:"可以少油少盐吗？",en:"Less oil / less salt?"},{id:"hf",zh:"可以做半份吗？",en:"Half portion?"}];
+
+// ─── STATE ───
+let dish=null,scanTimer=null;
+let allergenSt={},spiceSt=null,dietarySt={},customSt={};
+const META=['m-home','m-cam','m-scan','m-res','m-chef','m-hist'];
+const SCRMETA={home:0,cam:1,scan:2,res:3,staff:4,allergen:4,spice:4,dietary:4,custom:4,done:4,uresult:4,hist:5};
+
+function go(s){
+  if(s==='uresult')buildUR();
+  document.querySelectorAll('.scr').forEach(el=>el.classList.remove('on'));
+  const el=$('s-'+s);if(el)el.classList.add('on');
+  $('tb-home').style.display=['home','res','uresult'].includes(s)?'flex':'none';
+  $('tb-cam').style.display=s==='cam'?'flex':'none';
+  META.forEach((m,i)=>{const el=$(m);if(el)el.classList.toggle('on',SCRMETA[s]===i)});
+  updateDots(SCRMETA[s]??0);
+  if(s==='scan')startPhotoScan();
+}
+
+function selDish(i){dish=DISHES[i]}
+
+// ─── UNIFIED SCANNER ───
+const ALL_ITEMS=[
+  ...DISHES,
+  {zh:"东坡肉",en:"Dōng Pō Ròu",title:"Dongpo Braised Pork",cat:"Food",catC:"#C67B3C",emoji:"🍖",what:"Slow-braised pork belly in soy sauce and Shaoxing wine.",ctx:"A Hangzhou classic dating back 900 years.",tips:"Eat with steamed buns (馒头). One piece per person.",alg:"Soy, wheat, alcohol (Shaoxing wine)",type:"text"},
+  {zh:"禁止通行",en:"Jìn Zhǐ Tōng Xíng",title:"No Entry",cat:"Sign",catC:"#4A7FB5",emoji:"🚧",what:"Strictly prohibited. Restricted zone or danger.",ctx:"Hard stop. Could mean fines if ignored.",tips:"Do not pass even if locals do.",alg:"",type:"text"},
+  {zh:"连花清瘟胶囊",en:"Lián Huā Qīng Wēn",title:"Lianhua Qingwen Capsule",cat:"Product",catC:"#7B5EA7",emoji:"💊",what:"TCM for cold/flu — fever, sore throat, congestion.",ctx:"One of China's most popular OTC cold medicines.",tips:"4 capsules, 3x daily. Can combine with ibuprofen.",alg:"Contains ephedra (麻黄). Check heart conditions.",type:"text"},
+  {zh:"入住登记表",en:"Rù Zhù Dēng Jì Biǎo",title:"Hotel Check-in Form",cat:"Document",catC:"#B86B4A",emoji:"📄",what:"Mandatory registration form. Legal requirement for foreigners.",ctx:"Must register within 24 hours at every hotel.",tips:"Need passport + visa page. Staff helps with Chinese fields.",alg:"",type:"text"},
+];
+let demoIdx=0;
+function buildDemoThumbs(){
+  const c=$('demo-thumbs');c.innerHTML='';
+  ALL_ITEMS.forEach((d,i)=>{
+    const isP=d.type==='photo';
+    c.innerHTML+=`<div onclick="demoSelect(${i})" style="width:46px;height:46px;border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid ${demoIdx===i?'var(--accent)':'rgba(255,255,255,.1)'};flex-shrink:0;display:flex;align-items:center;justify-content:center;${isP?'':'background:rgba(255,255,255,.06);'}font-size:${isP?'10':'18'}px;transition:border-color .15s">${isP?`<img src="${d.photo}" style="width:100%;height:100%;object-fit:cover">`:(d.emoji||'字')}</div>`;
+  });
+}
+function demoSelect(i){demoIdx=i;dish=ALL_ITEMS[i];buildDemoThumbs()}
+function demoScan(){dish=ALL_ITEMS[demoIdx];go('scan')}
+
+// ─── PHOTO SCAN ───
+function startPhotoScan(){
+  if(!dish)return;
+  const isText=dish.type==='text';
+  $('scan-img').style.display=isText?'none':'block';
+  $('scan-text-box').style.display=isText?'flex':'none';
+  if(isText){$('st-emoji').textContent=dish.emoji||'';$('st-zh').textContent=dish.zh;$('scan-ok2').style.display='none'}
+  else{$('scan-photo').src=dish.photo;$('scan-ok').style.display='none'}
+  $('pbar-fill').style.width='0';$('scan-msg').textContent='';
+  let p=0;
+  const msgs=[{at:0,t:"Detecting Chinese text..."},{at:20,t:"Identifying: "+dish.zh},{at:45,t:"Analyzing meaning & context..."},{at:70,t:"Generating cultural explanation..."},{at:90,t:"Done ✓"}];
+  clearInterval(scanTimer);
+  scanTimer=setInterval(()=>{
+    p+=Math.random()*18+5;if(p>=100){p=100;clearInterval(scanTimer);
+      (isText?$('scan-ok2'):$('scan-ok')).style.display='flex';
+      setTimeout(showResult,400)}
+    $('pbar-fill').style.width=p+'%';
+    const ln=$(isText?'scan-line2':'scan-line');if(ln){ln.style.top=(p%50)*2+'%';ln.style.opacity=p<100?'0.8':'0'}
+    const msg=[...msgs].reverse().find(m=>p>=m.at);$('scan-msg').textContent=msg?msg.t:'';
+  },200);
+}
+function showResult(){
+  if(!dish)return;const isText=dish.type==='text';
+  $('res-img-w').style.display=isText?'none':'block';$('res-text-w').style.display=isText?'flex':'none';
+  if(isText){$('res-emoji2').textContent=dish.emoji||'';$('res-zh2').textContent=dish.zh}
+  else $('res-photo').src=dish.photo;
+  $('res-cat').textContent=dish.cat||'Food';$('res-cat').style.color=dish.catC||'#C67B3C';
+  $('res-name').textContent=dish.en;$('res-sub').textContent=dish.zh+' — '+dish.title;
+  $('res-what').textContent=dish.what;$('res-ctx').textContent=dish.ctx;$('res-tips').textContent=dish.tips;
+  $('res-allergens').textContent=dish.alg||'None identified';
+  $('staff-dish').textContent=dish.zh;$('staff-en').textContent=dish.en;
+  $('res-chef').style.display=(dish.cat==='Food')?'block':'none';
+  $('res-alert').style.display=dish.alg?'block':'none';
+  go('res');
+}
+
+// ─── TEXT SCAN VIEWFINDER ───
+// ─── BUILD LISTS ───
+function buildAllergenList(){const c=$('allergen-list');c.innerHTML='';ALLERGENS.forEach(a=>{const d=document.createElement('div');d.className='ali';d.innerHTML=`<span style="font-size:22px;width:28px;text-align:center">${a.e}</span><div style="flex:1"><div class="azh">${a.zh}</div><div class="aen">${a.en}${a.s?' · '+a.s:''}</div></div><div class="ab" style="background:#C8C4BD;color:#888">—</div>`;d.onclick=()=>{const b=d.querySelector('.ab');const st=allergenSt[a.id];if(st===true){allergenSt[a.id]=false;d.style.background='rgba(45,122,111,.08)';d.style.borderColor='#2D7A6F';b.style.background='#2D7A6F';b.style.color='#fff';b.textContent='✗'}else if(st===false){delete allergenSt[a.id];d.style.background='#fff';d.style.borderColor='#DDD';b.style.background='#C8C4BD';b.style.color='#888';b.textContent='—'}else{allergenSt[a.id]=true;d.style.background='rgba(196,86,74,.1)';d.style.borderColor='#C4564A';b.style.background='#C4564A';b.style.color='#fff';b.textContent='✓'}};c.appendChild(d)})}
+function buildSpiceList(){const c=$('spice-list');c.innerHTML='';SPICES.forEach(s=>{const d=document.createElement('div');d.className='sli';d.innerHTML=`<span style="font-size:24px;width:40px;text-align:center">${s.ic}</span><div style="flex:1"><div class="szh" style="color:#1A1A1A">${s.zh}</div><div class="sen">${s.en}</div></div><span class="sck" style="display:none;font-size:22px;font-weight:700">✓</span>`;d.onclick=()=>{spiceSt=s.id;document.querySelectorAll('.sli').forEach(x=>{x.style.borderColor='#DDD';x.style.background='#fff';x.querySelector('.szh').style.color='#1A1A1A';x.querySelector('.sck').style.display='none'});d.style.borderColor=s.c;d.style.background=s.c+'18';d.querySelector('.szh').style.color=s.c;d.querySelector('.sck').style.display='inline';d.querySelector('.sck').style.color=s.c};c.appendChild(d)})}
+function buildDietaryList(){const c=$('dietary-list');c.innerHTML='';DIETARY.forEach(d=>{const el=document.createElement('div');el.className='ali';el.innerHTML=`<span style="font-size:22px;width:28px;text-align:center">${d.e}</span><div style="flex:1"><div class="azh">${d.zh}</div><div class="aen">${d.en}</div></div><div class="ab" style="background:#C8C4BD"></div>`;el.onclick=()=>{dietarySt[d.id]=!dietarySt[d.id];const b=el.querySelector('.ab');if(dietarySt[d.id]){el.style.background='rgba(74,127,181,.08)';el.style.borderColor='#4A7FB5';b.style.background='#4A7FB5';b.textContent='✓'}else{delete dietarySt[d.id];el.style.background='#fff';el.style.borderColor='#DDD';b.style.background='#C8C4BD';b.textContent=''}};c.appendChild(el)})}
+function buildCustomList(){const c=$('custom-list');c.innerHTML='';CUSTOMS.forEach(q=>{const el=document.createElement('div');el.style.cssText='display:flex;align-items:center;gap:14px;padding:16px 18px;margin-bottom:10px;border-radius:12px;border:1.5px solid #DDD;background:#fff;cursor:pointer';el.innerHTML=`<div style="flex:1"><div style="font-size:17px;font-weight:700;color:#1A1A1A">${q.zh}</div><div style="font-size:13px;color:#555">${q.en}</div></div><div class="cbx" style="padding:6px 14px;border-radius:8px;font-size:14px;font-weight:700;background:#C8C4BD;color:#fff">可以?</div>`;el.onclick=()=>{customSt[q.id]=!customSt[q.id];const b=el.querySelector('.cbx');if(customSt[q.id]){el.style.background='rgba(45,122,111,.06)';el.style.borderColor='#2D7A6F';b.style.background='#2D7A6F';b.textContent='可以 Yes'}else{delete customSt[q.id];el.style.background='#fff';el.style.borderColor='#DDD';b.style.background='#C8C4BD';b.textContent='可以?'}};c.appendChild(el)})}
+
+function resetChef(){allergenSt={};spiceSt=null;dietarySt={};customSt={};['chk-a','chk-s','chk-d','chk-c'].forEach(id=>$(id).style.display='none');if($('staff-note'))$('staff-note').value='';buildAllergenList();buildSpiceList();buildDietaryList();buildCustomList()}
+function buildUR(){
+  if(!dish)return;const b=$('uresult-body');let h=`<div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">${dish.photo?`<img src="${dish.photo}" style="width:60px;height:60px;border-radius:14px;object-fit:cover">`:`<div style="width:60px;height:60px;border-radius:14px;background:#F0EDE8;display:flex;align-items:center;justify-content:center;font-size:28px">${dish.emoji||'🍖'}</div>`}<div><div style="font-size:11px;font-weight:700;letter-spacing:3px;color:var(--accent);text-transform:uppercase">Chef Confirmed</div><div style="font-family:var(--serif);font-size:22px">${dish.en}</div></div></div>`;
+  const aY=ALLERGENS.filter(a=>allergenSt[a.id]===true),aN=ALLERGENS.filter(a=>allergenSt[a.id]===false);
+  if(aY.length)h+=`<div style="padding:14px 16px;border-radius:12px;background:rgba(196,86,74,.08);border-left:4px solid #C4564A;margin-bottom:10px"><div style="font-size:13px;font-weight:800;color:#C4564A;margin-bottom:8px">⚠️ CONTAINS</div><div style="display:flex;flex-wrap:wrap;gap:6px">${aY.map(a=>`<span style="padding:5px 10px;border-radius:8px;background:rgba(196,86,74,.12);font-size:14px;font-weight:600;color:#9B3A30">${a.e} ${a.en}</span>`).join('')}</div></div>`;
+  if(aN.length)h+=`<div style="padding:14px 16px;border-radius:12px;background:rgba(45,122,111,.06);border-left:4px solid #2D7A6F;margin-bottom:10px"><div style="font-size:13px;font-weight:800;color:#2D7A6F;margin-bottom:8px">✓ DOES NOT CONTAIN</div><div style="display:flex;flex-wrap:wrap;gap:6px">${aN.map(a=>`<span style="padding:5px 10px;border-radius:8px;background:rgba(45,122,111,.08);font-size:14px;font-weight:600;color:#1D5C53">${a.e} ${a.en}</span>`).join('')}</div></div>`;
+  if(spiceSt){const s=SPICES.find(x=>x.id===spiceSt);if(s)h+=`<div style="padding:14px 16px;border-radius:12px;background:${s.c}14;border:1.5px solid ${s.c}40;margin-bottom:10px;display:flex;align-items:center;gap:12px"><span style="font-size:26px">${s.ic}</span><div><div style="font-size:15px;font-weight:700;color:${s.c}">Spice: ${s.en}</div><div style="font-size:13px;color:#555">${s.zh}</div></div></div>`}
+  const dY=DIETARY.filter(d=>dietarySt[d.id]);if(dY.length)h+=`<div style="padding:14px 16px;border-radius:12px;border:1.5px solid #DDD;margin-bottom:10px"><div style="font-size:13px;font-weight:800;color:#4A7FB5;margin-bottom:8px">Ingredients</div><div style="display:flex;flex-wrap:wrap;gap:6px">${dY.map(d=>`<span style="padding:5px 10px;border-radius:8px;background:#F0EDE8;font-size:14px;font-weight:500;color:#333">${d.e} ${d.en}</span>`).join('')}</div></div>`;
+  const cY=CUSTOMS.filter(c=>customSt[c.id]);if(cY.length)h+=`<div style="padding:14px 16px;border-radius:12px;border:1.5px solid #DDD;margin-bottom:10px"><div style="font-size:13px;font-weight:800;color:#2D7A6F;margin-bottom:8px">Chef says OK ✓</div>${cY.map(c=>`<div style="font-size:15px;padding:4px 0;font-weight:500;color:#222">${c.en}</div>`).join('')}</div>`;
+  const note=$('staff-note')?.value;if(note)h+=`<div style="padding:14px 16px;border-radius:12px;background:#F5F3EF;margin-bottom:10px"><div style="font-size:13px;font-weight:700;color:#666;margin-bottom:6px">Staff Note</div><div style="font-size:15px;color:#222;font-style:italic">${note}</div></div>`;
+  if(!aY.length&&!aN.length&&!spiceSt&&!dY.length)h+=`<div style="text-align:center;padding:32px;color:#888;font-size:15px">No items were checked.</div>`;
+  b.innerHTML=h;
+}
+
+// ─── DOTS ───
+function buildDots(){for(let i=0;i<6;i++){const c=$('dots-'+i);if(!c)continue;for(let j=0;j<6;j++){const b=document.createElement('button');b.className='sd';b.onclick=()=>{const map={0:'home',1:'cam',2:'scan',3:'res',4:'staff',5:'hist'};go(map[j])};c.appendChild(b)}}updateDots(0)}
+function updateDots(a){document.querySelectorAll('.sn').forEach(n=>{n.querySelectorAll('.sd').forEach((d,i)=>d.classList.toggle('on',i===a))})}
+function fClick(el){document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));el.classList.add('on')}
+
+// ─── INIT ───
+buildDemoThumbs();buildAllergenList();buildSpiceList();buildDietaryList();buildCustomList();buildDots();
+dish=DISHES[0];
+</script>
+</body>
+</html>
