@@ -4,17 +4,14 @@ import UIKit
 class ClaudeService {
     static let shared = ClaudeService()
 
-    private let apiKey = "YOUR_ANTHROPIC_API_KEY"
-    private let endpoint = "https://api.anthropic.com/v1/messages"
-    private let model = "claude-sonnet-4-20250514"
+    private let apiKey = "YOUR_GOOGLE_API_KEY"
 
-    private struct APIResponse: Decodable {
-        let content: [ContentBlock]
-        struct ContentBlock: Decodable {
-            let type: String
-            let text: String?
-        }
-    }
+    private let systemPrompt = """
+    You are a friendly cultural guide for foreigners visiting China.
+    Analyze the image and respond ONLY with valid JSON. No markdown, no backticks, no extra text.
+    {"title":"Pinyin or English name","zhName":"Chinese characters","subtitle":"Brief English description","category":"Food|Sign|Product|Document|Place|Other","what":"What it is (1-2 sentences)","context":"Cultural context (2-3 sentences)","tips":"Practical tips for a foreigner (1-2 sentences)","commonAllergens":"List allergens if food, else empty string"}
+    If food: taste, allergens, how to order. If sign: what action. If medicine: usage, dosage. English only. Friendly tone.
+    """
 
     func analyze(_ image: UIImage) async throws -> ScanResult {
         guard let jpeg = image.jpegData(compressionQuality: 0.7) else {
@@ -22,41 +19,30 @@ class ClaudeService {
         }
         let b64 = jpeg.base64EncodedString()
 
-        let systemPrompt = """
-        You are a friendly cultural guide for foreigners visiting China.
-        Analyze the image and respond ONLY with valid JSON. No markdown, no backticks, no extra text.
-        {"title":"Pinyin or English name","zhName":"Chinese characters","subtitle":"Brief English description","category":"Food|Sign|Product|Document|Place|Other","what":"What it is (1-2 sentences)","context":"Cultural context (2-3 sentences)","tips":"Practical tips for a foreigner (1-2 sentences)","commonAllergens":"List allergens if food, else empty string"}
-        If food: taste, allergens, how to order. If sign: what action. If medicine: usage, dosage. English only. Friendly tone.
-        """
+        let urlString = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=\(apiKey)"
 
         let body: [String: Any] = [
-            "model": model,
-            "max_tokens": 1024,
-            "system": systemPrompt,
-            "messages": [[
-                "role": "user",
-                "content": [
+            "systemInstruction": [
+                "parts": [["text": systemPrompt]]
+            ],
+            "contents": [[
+                "parts": [
                     [
-                        "type": "image",
-                        "source": [
-                            "type": "base64",
-                            "media_type": "image/jpeg",
+                        "inlineData": [
+                            "mimeType": "image/jpeg",
                             "data": b64
                         ]
                     ],
                     [
-                        "type": "text",
                         "text": "Analyze this image. Help me understand it as a foreigner in China."
                     ]
                 ]
             ]]
         ]
 
-        var req = URLRequest(url: URL(string: endpoint)!)
+        var req = URLRequest(url: URL(string: urlString)!)
         req.httpMethod = "POST"
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-        req.setValue("2023-06-01", forHTTPHeaderField: "anthropic-version")
         req.httpBody = try JSONSerialization.data(withJSONObject: body)
         req.timeoutInterval = 30
 
@@ -68,8 +54,8 @@ class ClaudeService {
             throw LensAIError.api("HTTP \(code): \(bodyStr)")
         }
 
-        let apiResp = try JSONDecoder().decode(APIResponse.self, from: data)
-        guard let text = apiResp.content.first?.text else {
+        let apiResp = try JSONDecoder().decode(GeminiResponse.self, from: data)
+        guard let text = apiResp.candidates?.first?.content?.parts?.first?.text else {
             throw LensAIError.noResp
         }
 
@@ -91,6 +77,24 @@ class ClaudeService {
         )
     }
 }
+
+// MARK: - Gemini API Response
+
+private struct GeminiResponse: Decodable {
+    let candidates: [Candidate]?
+
+    struct Candidate: Decodable {
+        let content: Content?
+    }
+    struct Content: Decodable {
+        let parts: [Part]?
+    }
+    struct Part: Decodable {
+        let text: String?
+    }
+}
+
+// MARK: - Errors
 
 enum LensAIError: LocalizedError {
     case imageFail, api(String), noResp, parse
