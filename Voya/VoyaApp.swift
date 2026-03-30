@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct LensAIApp: App {
+struct VoyaApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()

@@ -1,13 +1,13 @@
 //
-//  LensAIUITestsLaunchTests.swift
-//  LensAIUITests
+//  VoyaUITestsLaunchTests.swift
+//  VoyaUITests
 //
 //  Created by 瑞瑞 on 2026/3/12.
 //
 
 import XCTest
 
-final class LensAIUITestsLaunchTests: XCTestCase {
+final class VoyaUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

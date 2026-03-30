@@ -21,7 +21,7 @@ actor GeminiService {
         // Downscale to max 1024px on the longest side to reduce upload size
         let resized = image.resizedForUpload(maxDimension: 1024)
         guard let jpeg = resized.jpegData(compressionQuality: 0.7) else {
-            throw LensAIError.imageFail
+            throw VoyaError.imageFail
         }
 
         // Build multipart form data
@@ -45,7 +45,7 @@ actor GeminiService {
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
             let code = (response as? HTTPURLResponse)?.statusCode ?? 0
             let bodyStr = String(data: data, encoding: .utf8) ?? "unknown"
-            throw LensAIError.api("HTTP \(code): \(bodyStr)")
+            throw VoyaError.api("HTTP \(code): \(bodyStr)")
         }
 
         struct BackendResponse: Decodable {
@@ -63,9 +63,9 @@ actor GeminiService {
         do {
             parsed = try JSONDecoder().decode(BackendResponse.self, from: data)
         } catch {
-            print("[LensAI] JSON decode error: \(error)")
-            print("[LensAI] Raw response: \(String(data: data, encoding: .utf8) ?? "nil")")
-            throw LensAIError.parse
+            print("[Voya] JSON decode error: \(error)")
+            print("[Voya] Raw response: \(String(data: data, encoding: .utf8) ?? "nil")")
+            throw VoyaError.parse
         }
 
         // Filter out placeholder values like "N/A", "None", "Unknown", etc.
@@ -95,7 +95,7 @@ actor GeminiService {
             || isMeaningful(parsed.tips)
 
         guard hasDetails, !isTitleRejected, !isNegativeResponse else {
-            throw LensAIError.noContent
+            throw VoyaError.noContent
         }
 
         let allergens = parsed.commonAllergens
@@ -128,7 +128,7 @@ extension UIImage {
     }
 }
 
-enum LensAIError: LocalizedError {
+enum VoyaError: LocalizedError {
     case imageFail, api(String), noResp, parse, noContent
     var errorDescription: String? {
         switch self {

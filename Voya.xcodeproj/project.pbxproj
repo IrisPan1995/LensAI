@@ -12,37 +12,37 @@
 			containerPortal = 6A5561A72F628BD3002D4184 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6A5561AE2F628BD3002D4184;
-			remoteInfo = LensAI;
+			remoteInfo = "Voya";
 		};
 		6A5561C72F628BD4002D4184 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6A5561A72F628BD3002D4184 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6A5561AE2F628BD3002D4184;
-			remoteInfo = LensAI;
+			remoteInfo = "Voya";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6A5561AF2F628BD3002D4184 /* LensAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LensAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A5561BC2F628BD4002D4184 /* LensAITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LensAITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A5561C62F628BD4002D4184 /* LensAIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LensAIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A5561AF2F628BD3002D4184 /* Voya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voya.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A5561BC2F628BD4002D4184 /* VoyaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VoyaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A5561C62F628BD4002D4184 /* VoyaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VoyaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		6A5561B12F628BD3002D4184 /* LensAI */ = {
+		6A5561B12F628BD3002D4184 /* Voya */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LensAI;
+			path = "Voya";
 			sourceTree = "<group>";
 		};
-		6A5561BF2F628BD4002D4184 /* LensAITests */ = {
+		6A5561BF2F628BD4002D4184 /* VoyaTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LensAITests;
+			path = "VoyaTests";
 			sourceTree = "<group>";
 		};
-		6A5561C92F628BD4002D4184 /* LensAIUITests */ = {
+		6A5561C92F628BD4002D4184 /* VoyaUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LensAIUITests;
+			path = "VoyaUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +75,9 @@
 		6A5561A62F628BD3002D4184 = {
 			isa = PBXGroup;
 			children = (
-				6A5561B12F628BD3002D4184 /* LensAI */,
-				6A5561BF2F628BD4002D4184 /* LensAITests */,
-				6A5561C92F628BD4002D4184 /* LensAIUITests */,
+				6A5561B12F628BD3002D4184 /* Voya */,
+				6A5561BF2F628BD4002D4184 /* VoyaTests */,
+				6A5561C92F628BD4002D4184 /* VoyaUITests */,
 				6A5561B02F628BD3002D4184 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 		6A5561B02F628BD3002D4184 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6A5561AF2F628BD3002D4184 /* LensAI.app */,
-				6A5561BC2F628BD4002D4184 /* LensAITests.xctest */,
-				6A5561C62F628BD4002D4184 /* LensAIUITests.xctest */,
+				6A5561AF2F628BD3002D4184 /* Voya.app */,
+				6A5561BC2F628BD4002D4184 /* VoyaTests.xctest */,
+				6A5561C62F628BD4002D4184 /* VoyaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6A5561AE2F628BD3002D4184 /* LensAI */ = {
+		6A5561AE2F628BD3002D4184 /* Voya */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A5561D02F628BD4002D4184 /* Build configuration list for PBXNativeTarget "LensAI" */;
+			buildConfigurationList = 6A5561D02F628BD4002D4184 /* Build configuration list for PBXNativeTarget "Voya" */;
 			buildPhases = (
 				6A5561AB2F628BD3002D4184 /* Sources */,
 				6A5561AC2F628BD3002D4184 /* Frameworks */,
@@ -108,18 +108,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				6A5561B12F628BD3002D4184 /* LensAI */,
+				6A5561B12F628BD3002D4184 /* Voya */,
 			);
-			name = LensAI;
+			name = "Voya";
 			packageProductDependencies = (
 			);
-			productName = LensAI;
-			productReference = 6A5561AF2F628BD3002D4184 /* LensAI.app */;
+			productName = "Voya";
+			productReference = 6A5561AF2F628BD3002D4184 /* Voya.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6A5561BB2F628BD4002D4184 /* LensAITests */ = {
+		6A5561BB2F628BD4002D4184 /* VoyaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A5561D32F628BD4002D4184 /* Build configuration list for PBXNativeTarget "LensAITests" */;
+			buildConfigurationList = 6A5561D32F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyaTests" */;
 			buildPhases = (
 				6A5561B82F628BD4002D4184 /* Sources */,
 				6A5561B92F628BD4002D4184 /* Frameworks */,
@@ -131,18 +131,18 @@
 				6A5561BE2F628BD4002D4184 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				6A5561BF2F628BD4002D4184 /* LensAITests */,
+				6A5561BF2F628BD4002D4184 /* VoyaTests */,
 			);
-			name = LensAITests;
+			name = "VoyaTests";
 			packageProductDependencies = (
 			);
-			productName = LensAITests;
-			productReference = 6A5561BC2F628BD4002D4184 /* LensAITests.xctest */;
+			productName = "VoyaTests";
+			productReference = 6A5561BC2F628BD4002D4184 /* VoyaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6A5561C52F628BD4002D4184 /* LensAIUITests */ = {
+		6A5561C52F628BD4002D4184 /* VoyaUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A5561D62F628BD4002D4184 /* Build configuration list for PBXNativeTarget "LensAIUITests" */;
+			buildConfigurationList = 6A5561D62F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyaUITests" */;
 			buildPhases = (
 				6A5561C22F628BD4002D4184 /* Sources */,
 				6A5561C32F628BD4002D4184 /* Frameworks */,
@@ -154,13 +154,13 @@
 				6A5561C82F628BD4002D4184 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				6A5561C92F628BD4002D4184 /* LensAIUITests */,
+				6A5561C92F628BD4002D4184 /* VoyaUITests */,
 			);
-			name = LensAIUITests;
+			name = "VoyaUITests";
 			packageProductDependencies = (
 			);
-			productName = LensAIUITests;
-			productReference = 6A5561C62F628BD4002D4184 /* LensAIUITests.xctest */;
+			productName = "VoyaUITests";
+			productReference = 6A5561C62F628BD4002D4184 /* VoyaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -187,7 +187,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6A5561AA2F628BD3002D4184 /* Build configuration list for PBXProject "LensAI" */;
+			buildConfigurationList = 6A5561AA2F628BD3002D4184 /* Build configuration list for PBXProject "Voya" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -201,9 +201,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6A5561AE2F628BD3002D4184 /* LensAI */,
-				6A5561BB2F628BD4002D4184 /* LensAITests */,
-				6A5561C52F628BD4002D4184 /* LensAIUITests */,
+				6A5561AE2F628BD3002D4184 /* Voya */,
+				6A5561BB2F628BD4002D4184 /* VoyaTests */,
+				6A5561C52F628BD4002D4184 /* VoyaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -259,12 +259,12 @@
 /* Begin PBXTargetDependency section */
 		6A5561BE2F628BD4002D4184 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6A5561AE2F628BD3002D4184 /* LensAI */;
+			target = 6A5561AE2F628BD3002D4184 /* Voya */;
 			targetProxy = 6A5561BD2F628BD4002D4184 /* PBXContainerItemProxy */;
 		};
 		6A5561C82F628BD4002D4184 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6A5561AE2F628BD3002D4184 /* LensAI */;
+			target = 6A5561AE2F628BD3002D4184 /* Voya */;
 			targetProxy = 6A5561C72F628BD4002D4184 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -402,9 +402,9 @@
 				DEVELOPMENT_TEAM = U2W38X4XAX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Travel Lens";
+				INFOPLIST_KEY_CFBundleDisplayName = "Voya";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Travel Lens needs camera access to scan and identify text and objects";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Voya needs camera access to scan and identify text and objects";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -440,9 +440,9 @@
 				DEVELOPMENT_TEAM = U2W38X4XAX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Travel Lens";
+				INFOPLIST_KEY_CFBundleDisplayName = "Voya";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Travel Lens needs camera access to scan and identify text and objects";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Voya needs camera access to scan and identify text and objects";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -476,7 +476,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.LensAITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -484,7 +484,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LensAI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LensAI";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Voya.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Voya";
 			};
 			name = Debug;
 		};
@@ -498,7 +498,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.LensAITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -506,7 +506,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LensAI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LensAI";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Voya.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Voya";
 			};
 			name = Release;
 		};
@@ -518,7 +518,7 @@
 				DEVELOPMENT_TEAM = U2W38X4XAX;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.LensAIUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -526,7 +526,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LensAI;
+				TEST_TARGET_NAME = "Voya";
 			};
 			name = Debug;
 		};
@@ -538,7 +538,7 @@
 				DEVELOPMENT_TEAM = U2W38X4XAX;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.LensAIUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -546,14 +546,14 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LensAI;
+				TEST_TARGET_NAME = "Voya";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6A5561AA2F628BD3002D4184 /* Build configuration list for PBXProject "LensAI" */ = {
+		6A5561AA2F628BD3002D4184 /* Build configuration list for PBXProject "Voya" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A5561CE2F628BD4002D4184 /* Debug */,
@@ -562,7 +562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A5561D02F628BD4002D4184 /* Build configuration list for PBXNativeTarget "LensAI" */ = {
+		6A5561D02F628BD4002D4184 /* Build configuration list for PBXNativeTarget "Voya" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A5561D12F628BD4002D4184 /* Debug */,
@@ -571,7 +571,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A5561D32F628BD4002D4184 /* Build configuration list for PBXNativeTarget "LensAITests" */ = {
+		6A5561D32F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A5561D42F628BD4002D4184 /* Debug */,
@@ -580,7 +580,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A5561D62F628BD4002D4184 /* Build configuration list for PBXNativeTarget "LensAIUITests" */ = {
+		6A5561D62F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyaUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A5561D72F628BD4002D4184 /* Debug */,

@@ -149,11 +149,6 @@ struct ScannerView: View {
                     .position(x: geo.size.width / 2, y: boxOrigin.y + boxSize / 2)
                 }
 
-                // Instructions (below box)
-                Text("Point at any object or text")
-                    .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.8))
-                    .position(x: geo.size.width / 2, y: boxOrigin.y + boxSize + 30)
 
                 // Bottom controls
                 HStack(spacing: 40) {
