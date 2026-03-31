@@ -25,8 +25,8 @@
 
 /* Begin PBXFileReference section */
 		6A5561AF2F628BD3002D4184 /* Voyagee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voyagee.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A5561BC2F628BD4002D4184 /* VoyaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoyageeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A5561C62F628BD4002D4184 /* VoyaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoyageeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A5561BC2F628BD4002D4184 /* VoyageeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoyageeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A5561C62F628BD4002D4184 /* VoyageeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoyageeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -150,7 +150,7 @@
 			packageProductDependencies = (
 			);
 			productName = VoyageeTests;
-			productReference = 6A5561BC2F628BD4002D4184 /* VoyaTests.xctest */;
+			productReference = 6A5561BC2F628BD4002D4184 /* VoyageeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		6A5561C52F628BD4002D4184 /* VoyageeUITests */ = {
@@ -173,7 +173,7 @@
 			packageProductDependencies = (
 			);
 			productName = VoyageeUITests;
-			productReference = 6A5561C62F628BD4002D4184 /* VoyaUITests.xctest */;
+			productReference = 6A5561C62F628BD4002D4184 /* VoyageeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -590,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A5561D32F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyaTests" */ = {
+		6A5561D32F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyageeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A5561D42F628BD4002D4184 /* Debug */,
@@ -599,7 +599,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A5561D62F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyaUITests" */ = {
+		6A5561D62F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyageeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A5561D72F628BD4002D4184 /* Debug */,
