@@ -14,7 +14,7 @@ struct HomeView: View {
                     Text("Welcome to")
                         .font(.title3)
                         .foregroundColor(Theme.ink3)
-                    Text("Voyà")
+                    Text("Voyagee")
                         .font(.system(size: 40, weight: .bold, design: .serif))
                         .foregroundColor(Theme.ink)
                     Text("Point. Shoot. Understand anywhere.")
@@ -119,6 +119,22 @@ struct HomeView: View {
                     TipCard(emoji: "💊", title: "Medicine & Products",
                             text: "Scan medicine boxes or product labels for usage instructions.")
                 }
+
+                // Privacy Policy link
+                HStack {
+                    Spacer()
+                    Link(destination: URL(string: "https://onyx-firewall-81a.notion.site/Voyagee-Privacy-Policy-33439213e7f780d59edbdc1225d089ca")!) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "hand.raised.fill")
+                                .font(.caption2)
+                            Text("Privacy Policy")
+                                .font(.caption)
+                        }
+                        .foregroundColor(Theme.ink4)
+                    }
+                    Spacer()
+                }
+                .padding(.top, 8)
 
                 Spacer(minLength: 80)
             }

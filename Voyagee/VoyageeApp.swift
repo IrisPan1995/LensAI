@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct VoyaApp: App {
+struct VoyageeApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
@@ -41,6 +41,7 @@ struct RootView: View {
     @State private var showChef = false
     @StateObject private var chefConfirmation = ChefConfirmation()
 
+
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
@@ -56,17 +57,10 @@ struct RootView: View {
                 }
                 .tag(0)
 
-                // Only create ScannerView when Scan tab is selected
-                Group {
-                    if selectedTab == 1 {
-                        ScannerView { image, result in
-                            resultImage = image
-                            scanResult = result
-                            activeSheet = .scanResult
-                        }
-                    } else {
-                        Color(hex: "1A1A1A")
-                    }
+                ScannerView { image, result in
+                    resultImage = image
+                    scanResult = result
+                    activeSheet = .scanResult
                 }
                 .tabItem {
                     Image(systemName: "camera.viewfinder")

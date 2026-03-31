@@ -197,6 +197,12 @@ struct ScannerView: View {
                         .frame(width: 50, height: 50)
                 }
                 .position(x: geo.size.width / 2, y: geo.size.height - 60)
+
+                // AI disclosure text
+                Text("Photos are analyzed by Google Gemini AI. Images are not stored.")
+                    .font(.system(size: 10))
+                    .foregroundColor(.white.opacity(0.4))
+                    .position(x: geo.size.width / 2, y: geo.size.height - 16)
             }
         }
     }
@@ -267,7 +273,7 @@ struct ScannerView: View {
 
         for (progress, status, delay) in stages {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                if self.isAnalyzing {
+                if self.isAnalyzing && self.errorMessage == nil {
                     withAnimation {
                         self.analysisProgress = progress
                         self.analysisStatus = status
@@ -291,9 +297,11 @@ struct ScannerView: View {
                 }
             } catch {
                 await MainActor.run {
-                    errorMessage = error.localizedDescription
-                    analysisProgress = 0
-                    analysisStatus = "Error"
+                    withAnimation {
+                        errorMessage = error.localizedDescription
+                        analysisProgress = 0
+                        analysisStatus = ""
+                    }
                 }
             }
         }

@@ -1,5 +1,5 @@
 """
-Voya Backend Proxy — uses Google Gemini API with API key.
+Voyagee Backend Proxy — uses Google Gemini API with API key.
 Run: uvicorn main:app --host 0.0.0.0 --port 8000
 """
 
@@ -13,13 +13,15 @@ import google.generativeai as genai
 
 load_dotenv()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyBZXP2IpuGT_RDifjKTCO3FE2LOe1-ZLII")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if not GEMINI_API_KEY:
+    raise RuntimeError("GEMINI_API_KEY environment variable is required")
 genai.configure(api_key=GEMINI_API_KEY)
 
 model = genai.GenerativeModel(
     "gemini-2.0-flash",
     system_instruction=(
-        "You are Voya, a visual travel assistant that helps travelers understand "
+        "You are Voyagee, a visual travel assistant that helps travelers understand "
         "unfamiliar text, signs, menus, products, and objects in any country or language. "
         "When given an image, analyze it and return a JSON object with these exact fields: "
         '"title": short English title, '
@@ -34,7 +36,7 @@ model = genai.GenerativeModel(
     ),
 )
 
-app = FastAPI(title="Voya Backend")
+app = FastAPI(title="Voyagee Backend")
 
 app.add_middleware(
     CORSMiddleware,

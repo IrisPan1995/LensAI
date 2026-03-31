@@ -14,6 +14,12 @@ struct ResultView: View {
         result.category.lowercased() == "food"
     }
 
+    private func isMeaningful(_ text: String) -> Bool {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let placeholders = ["", "n/a", "na", "none", "unknown", "null", "-", "—"]
+        return !placeholders.contains(trimmed)
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -47,13 +53,13 @@ struct ResultView: View {
                             .font(.system(size: 28, weight: .bold, design: .serif))
                             .foregroundColor(Theme.ink)
 
-                        if !result.zhName.isEmpty {
+                        if isMeaningful(result.zhName) {
                             Text(result.zhName)
                                 .font(.title3)
                                 .foregroundColor(Theme.ink3)
                         }
 
-                        if !result.subtitle.isEmpty {
+                        if isMeaningful(result.subtitle) {
                             Text(result.subtitle)
                                 .font(.subheadline)
                                 .foregroundColor(Theme.ink4)

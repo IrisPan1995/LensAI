@@ -3,9 +3,11 @@ import SwiftData
 
 struct HistoryView: View {
     @Query(sort: \HistoryItem.date, order: .reverse) private var allItems: [HistoryItem]
+    @Environment(\.modelContext) private var modelContext
     @State private var searchText = ""
     @State private var selectedCategory = "All"
     @State private var selectedItem: HistoryItem?
+    @State private var itemToDelete: HistoryItem?
 
     private let categories = ["All", "Food", "Sign", "Product", "Document"]
 
@@ -76,20 +78,28 @@ struct HistoryView: View {
                         Spacer()
                     }
                 } else {
-                    ScrollView {
-                        LazyVStack(spacing: 8) {
-                            ForEach(filteredItems) { item in
-                                Button {
-                                    selectedItem = item
-                                } label: {
-                                    historyRow(item)
-                                }
-                                .buttonStyle(.plain)
+                    List {
+                        ForEach(filteredItems) { item in
+                            Button {
+                                selectedItem = item
+                            } label: {
+                                historyRow(item)
                             }
+                            .buttonStyle(.plain)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                Button(role: .destructive) {
+                                    itemToDelete = item
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
+                            .listRowInsets(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
                         }
-                        .padding(.horizontal, 20)
-                        .padding(.bottom, 80)
                     }
+                    .listStyle(.plain)
+                    .scrollContentBackground(.hidden)
                 }
             }
             .background(Theme.paper)
@@ -97,6 +107,24 @@ struct HistoryView: View {
             .navigationBarTitleDisplayMode(.large)
             .sheet(item: $selectedItem) { item in
                 HistoryResultView(item: item)
+            }
+            .alert("Delete Scan", isPresented: Binding(
+                get: { itemToDelete != nil },
+                set: { if !$0 { itemToDelete = nil } }
+            )) {
+                Button("Cancel", role: .cancel) {
+                    itemToDelete = nil
+                }
+                Button("Delete", role: .destructive) {
+                    if let item = itemToDelete {
+                        withAnimation {
+                            modelContext.delete(item)
+                        }
+                        itemToDelete = nil
+                    }
+                }
+            } message: {
+                Text("Are you sure you want to delete this scan? This action cannot be undone.")
             }
         }
     }

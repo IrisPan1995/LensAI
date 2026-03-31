@@ -6,12 +6,15 @@ actor GeminiService {
 
     private let backendURL = "https://travel-lens-backend-553916904261.asia-east1.run.app/analyze"
 
-    /// Analyze with automatic retry (1 retry on failure).
+    /// Analyze with automatic retry (1 retry on failure, skip retry for network errors).
     func analyze(image: UIImage) async throws -> ScanResult {
         do {
             return try await sendRequest(image: image)
+        } catch let error as VoyageeError where error == .network {
+            // No point retrying if there's no network
+            throw error
         } catch {
-            // Auto-retry once on any error
+            // Auto-retry once on other errors
             try await Task.sleep(nanoseconds: 500_000_000) // 0.5s delay
             return try await sendRequest(image: image)
         }
@@ -21,7 +24,7 @@ actor GeminiService {
         // Downscale to max 1024px on the longest side to reduce upload size
         let resized = image.resizedForUpload(maxDimension: 1024)
         guard let jpeg = resized.jpegData(compressionQuality: 0.7) else {
-            throw VoyaError.imageFail
+            throw VoyageeError.imageFail
         }
 
         // Build multipart form data
@@ -40,12 +43,22 @@ actor GeminiService {
         req.httpBody = body
         req.timeoutInterval = 60
 
-        let (data, response) = try await URLSession.shared.data(for: req)
+        let data: Data
+        let response: URLResponse
+        do {
+            (data, response) = try await URLSession.shared.data(for: req)
+        } catch let urlError as URLError where urlError.code == .notConnectedToInternet
+            || urlError.code == .networkConnectionLost
+            || urlError.code == .dataNotAllowed {
+            throw VoyageeError.network
+        } catch let urlError as URLError where urlError.code == .timedOut {
+            throw VoyageeError.api("Request timed out. Please try again.")
+        }
 
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
             let code = (response as? HTTPURLResponse)?.statusCode ?? 0
             let bodyStr = String(data: data, encoding: .utf8) ?? "unknown"
-            throw VoyaError.api("HTTP \(code): \(bodyStr)")
+            throw VoyageeError.api("HTTP \(code): \(bodyStr)")
         }
 
         struct BackendResponse: Decodable {
@@ -63,9 +76,9 @@ actor GeminiService {
         do {
             parsed = try JSONDecoder().decode(BackendResponse.self, from: data)
         } catch {
-            print("[Voya] JSON decode error: \(error)")
-            print("[Voya] Raw response: \(String(data: data, encoding: .utf8) ?? "nil")")
-            throw VoyaError.parse
+            print("[Voyagee] JSON decode error: \(error)")
+            print("[Voyagee] Raw response: \(String(data: data, encoding: .utf8) ?? "nil")")
+            throw VoyageeError.parse
         }
 
         // Filter out placeholder values like "N/A", "None", "Unknown", etc.
@@ -95,7 +108,7 @@ actor GeminiService {
             || isMeaningful(parsed.tips)
 
         guard hasDetails, !isTitleRejected, !isNegativeResponse else {
-            throw VoyaError.noContent
+            throw VoyageeError.noContent
         }
 
         let allergens = parsed.commonAllergens
@@ -115,7 +128,7 @@ actor GeminiService {
 }
 
 extension UIImage {
-    func resizedForUpload(maxDimension: CGFloat) -> UIImage {
+    nonisolated func resizedForUpload(maxDimension: CGFloat) -> UIImage {
         let longest = max(size.width, size.height)
         guard longest > maxDimension else { return self }
         let scale = maxDimension / longest
@@ -128,15 +141,16 @@ extension UIImage {
     }
 }
 
-enum VoyaError: LocalizedError {
-    case imageFail, api(String), noResp, parse, noContent
+enum VoyageeError: LocalizedError, Equatable {
+    case imageFail, api(String), noResp, parse, noContent, network
     var errorDescription: String? {
         switch self {
-        case .imageFail: return "Failed to process image"
-        case .api(let m): return "API Error: \(m)"
-        case .noResp: return "No AI response"
-        case .parse: return "Failed to parse AI response"
+        case .imageFail: return "Failed to process the image. Please try again."
+        case .api(let m): return "Something went wrong. Please try again later. (\(m))"
+        case .noResp: return "No response from the server. Please check your internet connection and try again."
+        case .parse: return "Unable to process the result. Please try again."
         case .noContent: return "Could not recognize the content. Try again with a clearer image."
+        case .network: return "No internet connection. Please check your network settings and try again."
         }
     }
 }

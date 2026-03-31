@@ -12,37 +12,50 @@
 			containerPortal = 6A5561A72F628BD3002D4184 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6A5561AE2F628BD3002D4184;
-			remoteInfo = "Voya";
+			remoteInfo = Voyagee;
 		};
 		6A5561C72F628BD4002D4184 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6A5561A72F628BD3002D4184 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6A5561AE2F628BD3002D4184;
-			remoteInfo = "Voya";
+			remoteInfo = Voyagee;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6A5561AF2F628BD3002D4184 /* Voya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voya.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A5561BC2F628BD4002D4184 /* VoyaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VoyaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A5561C62F628BD4002D4184 /* VoyaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VoyaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A5561AF2F628BD3002D4184 /* Voyagee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voyagee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A5561BC2F628BD4002D4184 /* VoyaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoyageeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A5561C62F628BD4002D4184 /* VoyaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoyageeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1F0AB04F2F7B7B9F00B8C2CB /* Exceptions for "Voyagee" folder in "Voyagee" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6A5561AE2F628BD3002D4184 /* Voyagee */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		6A5561B12F628BD3002D4184 /* Voya */ = {
+		6A5561B12F628BD3002D4184 /* Voyagee */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Voya";
+			exceptions = (
+				1F0AB04F2F7B7B9F00B8C2CB /* Exceptions for "Voyagee" folder in "Voyagee" target */,
+			);
+			path = Voyagee;
 			sourceTree = "<group>";
 		};
-		6A5561BF2F628BD4002D4184 /* VoyaTests */ = {
+		6A5561BF2F628BD4002D4184 /* VoyageeTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "VoyaTests";
+			path = VoyageeTests;
 			sourceTree = "<group>";
 		};
-		6A5561C92F628BD4002D4184 /* VoyaUITests */ = {
+		6A5561C92F628BD4002D4184 /* VoyageeUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "VoyaUITests";
+			path = VoyageeUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +88,9 @@
 		6A5561A62F628BD3002D4184 = {
 			isa = PBXGroup;
 			children = (
-				6A5561B12F628BD3002D4184 /* Voya */,
-				6A5561BF2F628BD4002D4184 /* VoyaTests */,
-				6A5561C92F628BD4002D4184 /* VoyaUITests */,
+				6A5561B12F628BD3002D4184 /* Voyagee */,
+				6A5561BF2F628BD4002D4184 /* VoyageeTests */,
+				6A5561C92F628BD4002D4184 /* VoyageeUITests */,
 				6A5561B02F628BD3002D4184 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +98,9 @@
 		6A5561B02F628BD3002D4184 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6A5561AF2F628BD3002D4184 /* Voya.app */,
-				6A5561BC2F628BD4002D4184 /* VoyaTests.xctest */,
-				6A5561C62F628BD4002D4184 /* VoyaUITests.xctest */,
+				6A5561AF2F628BD3002D4184 /* Voyagee.app */,
+				6A5561BC2F628BD4002D4184 /* VoyageeTests.xctest */,
+				6A5561C62F628BD4002D4184 /* VoyageeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6A5561AE2F628BD3002D4184 /* Voya */ = {
+		6A5561AE2F628BD3002D4184 /* Voyagee */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A5561D02F628BD4002D4184 /* Build configuration list for PBXNativeTarget "Voya" */;
+			buildConfigurationList = 6A5561D02F628BD4002D4184 /* Build configuration list for PBXNativeTarget "Voyagee" */;
 			buildPhases = (
 				6A5561AB2F628BD3002D4184 /* Sources */,
 				6A5561AC2F628BD3002D4184 /* Frameworks */,
@@ -108,18 +121,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				6A5561B12F628BD3002D4184 /* Voya */,
+				6A5561B12F628BD3002D4184 /* Voyagee */,
 			);
-			name = "Voya";
+			name = Voyagee;
 			packageProductDependencies = (
 			);
-			productName = "Voya";
-			productReference = 6A5561AF2F628BD3002D4184 /* Voya.app */;
+			productName = Voyagee;
+			productReference = 6A5561AF2F628BD3002D4184 /* Voyagee.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6A5561BB2F628BD4002D4184 /* VoyaTests */ = {
+		6A5561BB2F628BD4002D4184 /* VoyageeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A5561D32F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyaTests" */;
+			buildConfigurationList = 6A5561D32F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyageeTests" */;
 			buildPhases = (
 				6A5561B82F628BD4002D4184 /* Sources */,
 				6A5561B92F628BD4002D4184 /* Frameworks */,
@@ -131,18 +144,18 @@
 				6A5561BE2F628BD4002D4184 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				6A5561BF2F628BD4002D4184 /* VoyaTests */,
+				6A5561BF2F628BD4002D4184 /* VoyageeTests */,
 			);
-			name = "VoyaTests";
+			name = VoyageeTests;
 			packageProductDependencies = (
 			);
-			productName = "VoyaTests";
+			productName = VoyageeTests;
 			productReference = 6A5561BC2F628BD4002D4184 /* VoyaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6A5561C52F628BD4002D4184 /* VoyaUITests */ = {
+		6A5561C52F628BD4002D4184 /* VoyageeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A5561D62F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyaUITests" */;
+			buildConfigurationList = 6A5561D62F628BD4002D4184 /* Build configuration list for PBXNativeTarget "VoyageeUITests" */;
 			buildPhases = (
 				6A5561C22F628BD4002D4184 /* Sources */,
 				6A5561C32F628BD4002D4184 /* Frameworks */,
@@ -154,12 +167,12 @@
 				6A5561C82F628BD4002D4184 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				6A5561C92F628BD4002D4184 /* VoyaUITests */,
+				6A5561C92F628BD4002D4184 /* VoyageeUITests */,
 			);
-			name = "VoyaUITests";
+			name = VoyageeUITests;
 			packageProductDependencies = (
 			);
-			productName = "VoyaUITests";
+			productName = VoyageeUITests;
 			productReference = 6A5561C62F628BD4002D4184 /* VoyaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -187,7 +200,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6A5561AA2F628BD3002D4184 /* Build configuration list for PBXProject "Voya" */;
+			buildConfigurationList = 6A5561AA2F628BD3002D4184 /* Build configuration list for PBXProject "Voyagee" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -201,9 +214,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6A5561AE2F628BD3002D4184 /* Voya */,
-				6A5561BB2F628BD4002D4184 /* VoyaTests */,
-				6A5561C52F628BD4002D4184 /* VoyaUITests */,
+				6A5561AE2F628BD3002D4184 /* Voyagee */,
+				6A5561BB2F628BD4002D4184 /* VoyageeTests */,
+				6A5561C52F628BD4002D4184 /* VoyageeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -259,12 +272,12 @@
 /* Begin PBXTargetDependency section */
 		6A5561BE2F628BD4002D4184 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6A5561AE2F628BD3002D4184 /* Voya */;
+			target = 6A5561AE2F628BD3002D4184 /* Voyagee */;
 			targetProxy = 6A5561BD2F628BD4002D4184 /* PBXContainerItemProxy */;
 		};
 		6A5561C82F628BD4002D4184 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6A5561AE2F628BD3002D4184 /* Voya */;
+			target = 6A5561AE2F628BD3002D4184 /* Voyagee */;
 			targetProxy = 6A5561C72F628BD4002D4184 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -402,9 +415,12 @@
 				DEVELOPMENT_TEAM = U2W38X4XAX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Voya";
+				INFOPLIST_FILE = Voyagee/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Voyagee;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Voya needs camera access to scan and identify text and objects";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Voyagee needs camera access to scan and identify objects, signs, menus, and products around you.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Voyagee needs photo library access so you can select existing photos for analysis.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -416,7 +432,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.lensai2026;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.voyagee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -440,9 +456,12 @@
 				DEVELOPMENT_TEAM = U2W38X4XAX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Voya";
+				INFOPLIST_FILE = Voyagee/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Voyagee;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Voya needs camera access to scan and identify text and objects";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Voyagee needs camera access to scan and identify objects, signs, menus, and products around you.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Voyagee needs photo library access so you can select existing photos for analysis.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,7 +473,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.lensai2026;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.voyagee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -476,7 +495,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyaTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyageeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -484,7 +503,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Voya.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Voya";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Voyagee.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Voyagee";
 			};
 			name = Debug;
 		};
@@ -498,7 +517,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyaTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyageeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -506,7 +525,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Voya.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Voya";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Voyagee.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Voyagee";
 			};
 			name = Release;
 		};
@@ -518,7 +537,7 @@
 				DEVELOPMENT_TEAM = U2W38X4XAX;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyaUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyageeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -526,7 +545,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Voya";
+				TEST_TARGET_NAME = Voyagee;
 			};
 			name = Debug;
 		};
@@ -538,7 +557,7 @@
 				DEVELOPMENT_TEAM = U2W38X4XAX;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyaUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algormula.VoyageeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -546,14 +565,14 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Voya";
+				TEST_TARGET_NAME = Voyagee;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6A5561AA2F628BD3002D4184 /* Build configuration list for PBXProject "Voya" */ = {
+		6A5561AA2F628BD3002D4184 /* Build configuration list for PBXProject "Voyagee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A5561CE2F628BD4002D4184 /* Debug */,
@@ -562,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A5561D02F628BD4002D4184 /* Build configuration list for PBXNativeTarget "Voya" */ = {
+		6A5561D02F628BD4002D4184 /* Build configuration list for PBXNativeTarget "Voyagee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A5561D12F628BD4002D4184 /* Debug */,

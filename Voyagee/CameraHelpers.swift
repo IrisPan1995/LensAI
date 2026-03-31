@@ -17,7 +17,7 @@ class CameraManager: NSObject, ObservableObject {
 
     let session = AVCaptureSession()
     private let output = AVCapturePhotoOutput()
-    private let sessionQueue = DispatchQueue(label: "com.lensai.camera")
+    private let sessionQueue = DispatchQueue(label: "com.voyagee.camera")
 
     func configure() {
         let status = AVCaptureDevice.authorizationStatus(for: .video)
