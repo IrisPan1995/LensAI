@@ -1,10 +1,12 @@
 import SwiftUI
 import SwiftData
+import WebKit
 
 struct HomeView: View {
     @Query(sort: \HistoryItem.date, order: .reverse) private var history: [HistoryItem]
     @Binding var selectedTab: Int
     var onSelectHistory: (HistoryItem) -> Void
+    @State private var showPrivacyPolicy = false
 
     var body: some View {
         ScrollView {
@@ -123,7 +125,9 @@ struct HomeView: View {
                 // Privacy Policy link
                 HStack {
                     Spacer()
-                    Link(destination: URL(string: "https://onyx-firewall-81a.notion.site/Voyagee-Privacy-Policy-33439213e7f780d59edbdc1225d089ca")!) {
+                    Button {
+                        showPrivacyPolicy = true
+                    } label: {
                         HStack(spacing: 4) {
                             Image(systemName: "hand.raised.fill")
                                 .font(.caption2)
@@ -135,6 +139,9 @@ struct HomeView: View {
                     Spacer()
                 }
                 .padding(.top, 8)
+                .sheet(isPresented: $showPrivacyPolicy) {
+                    PrivacyPolicyView()
+                }
 
                 Spacer(minLength: 80)
             }
@@ -170,6 +177,39 @@ private struct TipCard: View {
         .background(Color.white)
         .cornerRadius(12)
     }
+}
+
+// MARK: - Privacy Policy View
+
+private struct PrivacyPolicyView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            LocalWebView(fileName: "privacy")
+                .navigationTitle("Privacy Policy")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Done") { dismiss() }
+                    }
+                }
+        }
+    }
+}
+
+private struct LocalWebView: UIViewRepresentable {
+    let fileName: String
+
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "html") {
+            webView.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
+        }
+        return webView
+    }
+
+    func updateUIView(_ uiView: WKWebView, context: Context) {}
 }
 
 // MARK: - Relative Date

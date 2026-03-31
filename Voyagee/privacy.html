@@ -7,41 +7,131 @@
 <style>
 body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 680px; margin: 0 auto; padding: 40px 24px; color: #1A1A1A; line-height: 1.7; }
 h1 { font-size: 28px; margin-bottom: 8px; }
-h2 { font-size: 18px; margin-top: 32px; color: #2D7A6F; }
+h2 { font-size: 20px; margin-top: 32px; color: #1A1A1A; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+h3 { font-size: 16px; margin-top: 24px; color: #333; }
 p { margin: 12px 0; color: #333; }
-.date { color: #777; font-size: 14px; margin-bottom: 32px; }
+ul { margin: 8px 0; padding-left: 24px; color: #333; }
+li { margin: 6px 0; }
+a { color: #2D7A6F; }
+hr { border: none; border-top: 1px solid #eee; margin: 24px 0; }
+.date { color: #777; font-size: 14px; font-style: italic; margin-bottom: 32px; }
+.footer { margin-top: 48px; color: #999; font-size: 13px; }
 </style>
 </head>
 <body>
 <h1>Voyagee Privacy Policy</h1>
-<p class="date">Last updated: March 13, 2026</p>
+<p class="date">Last updated: March 31, 2026</p>
+
+<hr>
 
 <h2>Overview</h2>
-<p>Voyagee ("the App") is a visual travel assistant that helps travelers understand unfamiliar text, signs, and objects anywhere in the world. We are committed to protecting your privacy. This policy explains what data we collect and how we use it.</p>
+<p>Voyagee ("the App") is a visual travel assistant that helps travelers understand unfamiliar text, signs, menus, products, and objects anywhere in the world. Your privacy is important to us. This policy explains what data we collect, how we use it, and your choices regarding your information.</p>
 
-<h2>Data We Collect</h2>
-<p><strong>Camera Images:</strong> When you take a photo or select an image, it is sent to our AI provider (Google Gemini API) for analysis. Images are processed in real-time and are not stored on our servers.</p>
-<p><strong>Scan History:</strong> Your scan results are stored locally on your device using SwiftData. This data never leaves your device unless you choose to share it.</p>
-<p><strong>Ask the Chef Data:</strong> Allergen confirmations, spice preferences, and dietary selections are stored temporarily in memory during your session. They are not transmitted or stored permanently.</p>
+<hr>
+
+<h2>Data We Collect and How We Use It</h2>
+
+<h3>Camera and Photo Library Images</h3>
+<p>When you use the Scan feature, you can take a photo with your camera or select an image from your photo library. The captured image is sent to our backend server, which forwards it to the Google Gemini API for analysis. This process happens in real-time to identify and explain the content of the image.</p>
+<ul>
+<li>Images are transmitted over an encrypted (HTTPS) connection</li>
+<li>Images are processed in real-time and are <strong>not stored</strong> on our servers</li>
+<li>We do not retain, cache, or log the images after processing</li>
+<li>The analysis results (text only) are returned to your device</li>
+</ul>
+
+<h3>Scan History</h3>
+<p>Your scan results (including the title, description, category, and a compressed copy of the scanned image) are stored <strong>locally on your device</strong> using Apple's SwiftData framework. This data never leaves your device unless you choose to share it. You have full control over this data and can delete individual records or all data at any time.</p>
+
+<h3>Ask the Chef Data</h3>
+<p>When you use the "Ask the Chef" feature, your allergen selections, spice preferences, dietary choices, and custom questions are stored <strong>temporarily in device memory</strong> during your active session only. This information is:</p>
+<ul>
+<li>Not transmitted to any server</li>
+<li>Not stored permanently on your device</li>
+<li>Cleared when you close the feature or start a new session</li>
+</ul>
+
+<hr>
 
 <h2>Data We Do NOT Collect</h2>
-<p>We do not collect personal information such as your name, email, phone number, or location. We do not use analytics, tracking, or advertising SDKs. We do not sell or share any data with third parties.</p>
+<p>We want to be clear about what we do <strong>not</strong> collect:</p>
+<ul>
+<li><strong>No personal information</strong>: We do not collect your name, email address, phone number, or any other personally identifiable information</li>
+<li><strong>No location data</strong>: We do not access or collect your GPS location</li>
+<li><strong>No device identifiers</strong>: We do not collect your device ID, IDFA, or other device identifiers</li>
+<li><strong>No analytics or tracking</strong>: We do not use any analytics SDKs, tracking pixels, or behavioral monitoring tools</li>
+<li><strong>No advertising</strong>: We do not display ads or use any advertising SDKs</li>
+<li><strong>No account required</strong>: The App does not require registration or login</li>
+</ul>
+
+<hr>
 
 <h2>Third-Party Services</h2>
-<p>The App uses the Google Gemini API to analyze images. Images sent for analysis are subject to <a href="https://ai.google.dev/terms">Google's API Terms of Service</a>. Google does not use paid API inputs to train their models.</p>
 
-<h2>Data Storage</h2>
-<p>All scan history is stored locally on your device. You can delete individual scan records by swiping left on any item in the History tab. You can also delete all data by uninstalling the App. No data is stored on external servers.</p>
+<h3>Google Gemini API</h3>
+<p>The App uses the Google Gemini API to analyze images. When you scan an image, it is sent to Google's servers for AI-based analysis. This is the only third-party service the App uses.</p>
+<ul>
+<li>Google processes the image to generate a text-based analysis</li>
+<li>According to Google's API Terms of Service, paid API inputs are not used to train their models</li>
+<li>For more information, see <a href="https://ai.google.dev/terms">Google's API Terms of Service</a> and <a href="https://policies.google.com/privacy">Google's Privacy Policy</a></li>
+</ul>
+
+<hr>
+
+<h2>Data Storage and Deletion</h2>
+<p><strong>Local Storage</strong>: All scan history is stored exclusively on your device. No data is stored on external servers.</p>
+<p><strong>Deleting Individual Records</strong>: You can delete any scan record by swiping left on the item in the History tab and tapping "Delete."</p>
+<p><strong>Deleting All Data</strong>: You can remove all App data by uninstalling Voyagee from your device. Since all data is stored locally, uninstalling the App permanently removes all associated data.</p>
+
+<hr>
+
+<h2>Data Security</h2>
+<p>We take reasonable measures to protect your information:</p>
+<ul>
+<li>All network communications use HTTPS encryption</li>
+<li>Images are transmitted securely and are not stored after processing</li>
+<li>Local data is protected by your device's built-in security features (passcode, Face ID, Touch ID)</li>
+</ul>
+
+<hr>
 
 <h2>Children's Privacy</h2>
-<p>The App is not directed at children under 13. We do not knowingly collect information from children.</p>
+<p>Voyagee is not directed at children under the age of 13 (or the applicable age in your jurisdiction). We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, please contact us and we will take steps to delete such information.</p>
 
-<h2>Changes</h2>
-<p>We may update this policy from time to time. Changes will be posted on this page with an updated date.</p>
+<hr>
 
-<h2>Contact</h2>
-<p>If you have questions about this policy, please contact us through our <a href="https://github.com/IrisPan1995/Voya">GitHub repository</a>.</p>
+<h2>Allergen and Dietary Information Disclaimer</h2>
+<p>The allergen warnings, dietary information, and "Ask the Chef" feature are provided for <strong>informational purposes only</strong>. This information is generated by AI and should not be relied upon as a substitute for directly confirming ingredients and allergens with restaurant staff. Voyagee is not responsible for the accuracy of allergen or dietary information. If you have food allergies or dietary restrictions, always verify directly with the food provider before consuming any food.</p>
 
-<p style="margin-top: 48px; color: #999; font-size: 13px;">© 2026 innuno. All rights reserved.</p>
+<hr>
+
+<h2>International Data Transfers</h2>
+<p>When you scan an image, it is transmitted to Google's servers for processing. These servers may be located outside your country of residence. By using the App, you consent to this transfer. We rely on Google's data processing infrastructure and their compliance with applicable data protection regulations.</p>
+
+<hr>
+
+<h2>Your Rights</h2>
+<p>Depending on your jurisdiction, you may have the right to:</p>
+<ul>
+<li>Access the personal data we hold about you (note: we hold no personal data on our servers)</li>
+<li>Delete your local scan history at any time through the App</li>
+<li>Opt out of image analysis by simply not using the Scan feature</li>
+</ul>
+<p>Since we do not collect or store personal data on our servers, most data rights can be exercised directly through the App by managing your local scan history.</p>
+
+<hr>
+
+<h2>Changes to This Policy</h2>
+<p>We may update this Privacy Policy from time to time. When we make changes, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically for any changes.</p>
+
+<hr>
+
+<h2>Contact Us</h2>
+<p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+<ul>
+<li>Email: hankingetsu@163.com</li>
+</ul>
+
+<p class="footer">&copy; 2026 algormula Pte. Ltd. All rights reserved.</p>
 </body>
 </html>
