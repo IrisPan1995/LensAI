@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Voyageer needs camera access to scan and identify objects, signs, menus, and products around you.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Voyageer needs photo library access so you can select existing photos for analysis.</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-</dict>
+<dict/>
 </plist>
