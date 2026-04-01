@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct VoyageeApp: App {
+struct VoyageerApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()

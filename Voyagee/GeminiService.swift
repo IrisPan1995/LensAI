@@ -10,7 +10,7 @@ actor GeminiService {
     func analyze(image: UIImage) async throws -> ScanResult {
         do {
             return try await sendRequest(image: image)
-        } catch let error as VoyageeError where error == .network {
+        } catch let error as VoyageerError where error == .network {
             // No point retrying if there's no network
             throw error
         } catch {
@@ -24,7 +24,7 @@ actor GeminiService {
         // Downscale to max 1024px on the longest side to reduce upload size
         let resized = image.resizedForUpload(maxDimension: 1024)
         guard let jpeg = resized.jpegData(compressionQuality: 0.7) else {
-            throw VoyageeError.imageFail
+            throw VoyageerError.imageFail
         }
 
         // Build multipart form data
@@ -50,15 +50,15 @@ actor GeminiService {
         } catch let urlError as URLError where urlError.code == .notConnectedToInternet
             || urlError.code == .networkConnectionLost
             || urlError.code == .dataNotAllowed {
-            throw VoyageeError.network
+            throw VoyageerError.network
         } catch let urlError as URLError where urlError.code == .timedOut {
-            throw VoyageeError.api("Request timed out. Please try again.")
+            throw VoyageerError.api("Request timed out. Please try again.")
         }
 
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
             let code = (response as? HTTPURLResponse)?.statusCode ?? 0
             let bodyStr = String(data: data, encoding: .utf8) ?? "unknown"
-            throw VoyageeError.api("HTTP \(code): \(bodyStr)")
+            throw VoyageerError.api("HTTP \(code): \(bodyStr)")
         }
 
         struct BackendResponse: Decodable {
@@ -76,9 +76,9 @@ actor GeminiService {
         do {
             parsed = try JSONDecoder().decode(BackendResponse.self, from: data)
         } catch {
-            print("[Voyagee] JSON decode error: \(error)")
-            print("[Voyagee] Raw response: \(String(data: data, encoding: .utf8) ?? "nil")")
-            throw VoyageeError.parse
+            print("[Voyageer] JSON decode error: \(error)")
+            print("[Voyageer] Raw response: \(String(data: data, encoding: .utf8) ?? "nil")")
+            throw VoyageerError.parse
         }
 
         // Filter out placeholder values like "N/A", "None", "Unknown", etc.
@@ -108,7 +108,7 @@ actor GeminiService {
             || isMeaningful(parsed.tips)
 
         guard hasDetails, !isTitleRejected, !isNegativeResponse else {
-            throw VoyageeError.noContent
+            throw VoyageerError.noContent
         }
 
         let allergens = parsed.commonAllergens
@@ -141,7 +141,7 @@ extension UIImage {
     }
 }
 
-enum VoyageeError: LocalizedError, Equatable {
+enum VoyageerError: LocalizedError, Equatable {
     case imageFail, api(String), noResp, parse, noContent, network
     var errorDescription: String? {
         switch self {

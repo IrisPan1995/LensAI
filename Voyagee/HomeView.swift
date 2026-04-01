@@ -16,7 +16,7 @@ struct HomeView: View {
                     Text("Welcome to")
                         .font(.title3)
                         .foregroundColor(Theme.ink3)
-                    Text("Voyagee")
+                    Text("Voyageer")
                         .font(.system(size: 40, weight: .bold, design: .serif))
                         .foregroundColor(Theme.ink)
                     Text("Point. Shoot. Understand anywhere.")
